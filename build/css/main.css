@@ -1,0 +1,147 @@
+@-webkit-keyframes trip {
+  0% {
+    -ms-transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%); }
+  40% {
+    -ms-transform: translateX(77%) translateY(-14%) rotate(10deg);
+    -webkit-transform: translateX(77%) translateY(-14%) rotate(10deg);
+    transform: translateX(77%) translateY(-14%) rotate(10deg); }
+  55% {
+    -ms-transform: translateX(90%) translateY(-17%) rotate(-2deg);
+    -webkit-transform: translateX(90%) translateY(-17%) rotate(-2deg);
+    transform: translateX(90%) translateY(-17%) rotate(-2deg); }
+  70% {
+    -ms-transform: translateX(90%) translateY(-19%) rotate(2deg);
+    -webkit-transform: translateX(90%) translateY(-19%) rotate(2deg);
+    transform: translateX(90%) translateY(-19%) rotate(2deg); }
+  80% {
+    -ms-transform: translateX(92%) translateY(-21%) rotate(-1deg);
+    -webkit-transform: translateX(92%) translateY(-21%) rotate(-1deg);
+    transform: translateX(92%) translateY(-21%) rotate(-1deg); }
+  86% {
+    -ms-transform: translateX(94%) translateY(-23%) rotate(0deg);
+    -webkit-transform: translateX(94%) translateY(-23%) rotate(0deg);
+    transform: translateX(94%) translateY(-23%) rotate(0deg); }
+  100% {
+    -ms-transform: translateX(94%) translateY(-28%) rotate(0deg);
+    -webkit-transform: translateX(94%) translateY(-28%) rotate(0deg);
+    transform: translateX(94%) translateY(-28%) rotate(0deg); } }
+
+@keyframes trip {
+  0% {
+    -ms-transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%); }
+  40% {
+    -ms-transform: translateX(77%) translateY(-14%) rotate(10deg);
+    -webkit-transform: translateX(77%) translateY(-14%) rotate(10deg);
+    transform: translateX(77%) translateY(-14%) rotate(10deg); }
+  55% {
+    -ms-transform: translateX(90%) translateY(-17%) rotate(-2deg);
+    -webkit-transform: translateX(90%) translateY(-17%) rotate(-2deg);
+    transform: translateX(90%) translateY(-17%) rotate(-2deg); }
+  70% {
+    -ms-transform: translateX(90%) translateY(-19%) rotate(2deg);
+    -webkit-transform: translateX(90%) translateY(-19%) rotate(2deg);
+    transform: translateX(90%) translateY(-19%) rotate(2deg); }
+  80% {
+    -ms-transform: translateX(92%) translateY(-21%) rotate(-1deg);
+    -webkit-transform: translateX(92%) translateY(-21%) rotate(-1deg);
+    transform: translateX(92%) translateY(-21%) rotate(-1deg); }
+  86% {
+    -ms-transform: translateX(94%) translateY(-23%) rotate(0deg);
+    -webkit-transform: translateX(94%) translateY(-23%) rotate(0deg);
+    transform: translateX(94%) translateY(-23%) rotate(0deg); }
+  100% {
+    -ms-transform: translateX(94%) translateY(-28%) rotate(0deg);
+    -webkit-transform: translateX(94%) translateY(-28%) rotate(0deg);
+    transform: translateX(94%) translateY(-28%) rotate(0deg); } }
+
+* {
+  box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 20px;
+  font-family: Arial, "sans-serif";
+  color: #FFF; }
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.3em;
+  font-weight: 700;
+  margin: 0; }
+
+h1 {
+  font-size: 3rem; }
+
+h2 {
+  font-size: 2.3rem; }
+
+h3 {
+  font-size: 1.8rem; }
+
+h4 {
+  font-size: 1.3rem; }
+
+a {
+  color: #FFF;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+  a:visited {
+    color: #FFF; }
+
+main {
+  position: relative;
+  display: block;
+  height: 100vh;
+  text-align: center;
+  background-color: #58EBB3; }
+  main .box {
+    position: absolute;
+    right: 50%;
+    -ms-transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    bottom: 0;
+    z-index: 2;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: #9E7E33;
+    box-shadow: 4px 2px 20px -10px #000; }
+  main .drump-box {
+    position: absolute;
+    right: 50%;
+    -ms-transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    bottom: 100px;
+    z-index: 1;
+    display: inline-block;
+    width: 200px;
+    height: 400px;
+    background-color: #666;
+    box-shadow: 4px 2px 20px -10px #000; }
+  @media (orientation: landscape) {
+    main {
+      height: 100vw;
+      width: 100vh;
+      -ms-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+      transform-origin: 50vw 50vw; }
+      main .drump-box {
+        -webkit-animation: trip 1.4s ease-in 1s 1 normal forwards;
+        animation: trip 1.4s ease-in 1s 1 normal forwards; } }
+  main.trip .drump-box {
+    -webkit-animation: trip 1.4s ease-in 1s 1 normal forwards;
+    animation: trip 1.4s ease-in 1s 1 normal forwards; }

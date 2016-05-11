@@ -46,12 +46,12 @@ gulp.task('server', function(){
 	gulp.src('./build')
 		.pipe(server({
 			livereload: true,
-			open: true
+			open: false
 		}));
 });
 
 gulp.task('watch', function(){
-    gulp.watch(['./src/css/scss/**/*.scss'], ['styles']);
+    gulp.watch(['./src/scss/**/*.scss'], ['styles']);
     gulp.watch(['./src/js/**/*.js'], ['scripts']);
     gulp.watch(['./src/html/**/*.html'], ['html'])
 });

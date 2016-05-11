@@ -3,22 +3,115 @@
 //============================
 
 //// COLORS ////
+//-------------
 $black:		    #000;
-$grey:		    lighten($black, 20%);
-$lightGrey:	  	lighten($black, 70%);
-$lighterGrey:   lighten($black, 100%);
-$offWhite: 		#FAFAFA;
+$grey:		    #666;
+$light-grey:	#aaa;
+$lighter-grey:  #ddd;
+$off-white: 	#FAFAFA;
 $white: 		#FFF;
 
+$mint: 			#58EBB3;
+$brown: 		#9E7E33;
+
+$main-bg: 		$mint;
+$box-color: 	$brown;
+$text-color: 	$white;
+$box-shadow: 	 4px 2px 20px -10px $black;
 
 
 //// FONTS ////
+//-------------
 $base-font-size: 	20px;
 $sansFamily: 		Arial, 'sans-serif';
 
 
+//// BREAKPOINTS ////
+//-------------------
+$mobile:    768px;
+$tablet:    1024px;
+$desktop:   1200px;
+
+
+//// LAYOUT ////
+//-------------------
+$container:   800px;
+$container-lg:  1000px;
+
+
+//// OTHER ////
+//-------------
+$curve1: cubic-bezier(.22,.07,.23,.99);
+$curve2: cubic-bezier(.97,.05,.7,.96);
+$curve3: cubic-bezier(.21,.05,.07,.99);
+
+
+
 //// MIXINS ////
+//-------------
 @mixin transition($time: 0.3s) {
 	-webkit-transition: all $time;
 	transition: all $time;
 }
+@mixin transform($props) {
+  -ms-transform: $props;
+  -webkit-transform: $props;
+  transform: $props;
+}
+@mixin centerMe() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform( translate(-50%, -50%) );
+}
+@mixin centerX() {
+  position: absolute;
+  right: 50%;
+  @include transform( translateX(50%) );
+}
+@mixin centerY() {
+  position: absolute;
+  top: 50%;
+  @include transform( translateY(-50%) );
+}
+
+// Animations
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animation($name, $duration, $timing: $curve1, $delay: 0s, $iterations: 1, $direction: normal,  $fill-mode: forwards) {
+
+  -webkit-animation: $name $duration $timing $delay $iterations $direction $fill-mode;
+  animation: $name $duration $timing $delay $iterations $direction $fill-mode;
+
+}
+
+@include keyframes(trip) {
+	0% {
+		@include transform( translateX(50%) );
+	}
+	40% {
+		@include transform( translateX(77%) translateY(-14%) rotate(10deg) );
+	}
+	55% {
+		@include transform( translateX(90%) translateY(-17%) rotate(-2deg) );
+	}
+	70% {
+		@include transform( translateX(90%) translateY(-19%) rotate(2deg) );
+	}
+	80% {
+		@include transform( translateX(92%) translateY(-21%) rotate(-1deg) );
+	}
+	86% {
+		@include transform( translateX(94%) translateY(-23%) rotate(0deg) );
+	}
+	100% {
+		@include transform( translateX(94%) translateY(-28%) rotate(0deg) );
+	}
+};
