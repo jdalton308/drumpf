@@ -97,21 +97,40 @@ $curve3: cubic-bezier(.21,.05,.07,.99);
 		@include transform( translateX(50%) );
 	}
 	40% {
-		@include transform( translateX(77%) translateY(-14%) rotate(10deg) );
+		@include transform( translateX(45vh) translateY(-14vw) rotate(10deg) );
 	}
 	55% {
-		@include transform( translateX(90%) translateY(-17%) rotate(-2deg) );
+		@include transform( translateX(48vh) translateY(-17vw) rotate(-2deg) );
 	}
 	70% {
-		@include transform( translateX(90%) translateY(-19%) rotate(2deg) );
+		@include transform( translateX(49vh) translateY(-19vw) rotate(2deg) );
 	}
 	80% {
-		@include transform( translateX(92%) translateY(-21%) rotate(-1deg) );
+		@include transform( translateX(49vh) translateY(-21vw) rotate(-1deg) );
 	}
 	86% {
-		@include transform( translateX(94%) translateY(-23%) rotate(0deg) );
+		@include transform( translateX(50vh) translateY(-23vw) rotate(0deg) );
 	}
 	100% {
-		@include transform( translateX(94%) translateY(-28%) rotate(0deg) );
+		@include transform( translateX(50vh) translateY(-26vw) rotate(0deg) );
 	}
+};
+
+@include keyframes(tripDesktop) {
+	0% {
+		@include transform( translateX(50%) );
+	}
+	40% {
+		@include transform( translateX(48%) rotate(95deg) translateY(-7vw) )
+	}
+	60% {
+		@include transform( translateX(49%) rotate(87deg) translateY(-10vw) )
+	}
+	80% {
+		@include transform( translateX(50%) rotate(91deg) translateY(-12vw) )
+	}
+	100% {
+		@include transform( translateX(50%) rotate(90deg) translateY(-13vw) )
+	}
+
 };

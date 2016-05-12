@@ -53,9 +53,14 @@ main {
 	position: relative;
 	display: block;
 	height: 100vh;
+	width: 100%;
+	overflow: hidden;
 	text-align: center;
 	background-color: $main-bg;
 
+	.trip-btn {
+		display: none;
+	}
 	.box {
 		@include centerX();
 		bottom: 0;
@@ -75,22 +80,108 @@ main {
 		height: 400px;
 		background-color: $grey;
 		box-shadow: $box-shadow;
+
+		// background-image: url('/img/drumpf_standing.png');
+		// background-position: center bottom;
+		// background-repeat: no-repeat;
+		// background-size: contain;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+
+			&.fallen {
+				display: none;
+			}
+		}
+	}
+
+	@media (min-width: $mobile + 1) {
+		padding-top: 10vh;
+		
+		.drump-box {
+			transform-origin: $box-height 100%;
+		}
+		.trip-btn {
+			display: inline-block;
+			padding: 15px 30px;
+			border: 1px solid $grey;
+			color: $grey;
+			font-size: 1.5rem;
+			background-color: transparent;
+			box-shadow: $box-shadow;
+		}
+
+		&.trip {
+			.drump-box {
+				@include animation(tripDesktop, 1.5s, ease-in, 0.2s);
+				// background-image: url('/img/drumpf_fallen.png');
+
+				img {
+					&.fallen {
+						display: block;
+					}
+					&.standing {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+.rotate-warn {
+	display: none;
+	position: fixed;
+	z-index: 5;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: $light-grey;
+
+	.copy-box {
+		@include centerMe();
+		width: 50%;
+		text-align: center;
 	}
 
 	@media (orientation: landscape) {
-		height: 100vw;
-		width: 100vh;
-		@include transform( rotate(90deg) );
-		transform-origin: 50vw 50vw;
+		display: block;
+	}
+	@media (min-width: $mobile) {
+		display: none;
+	}
+}
 
-		.drump-box {
-			@include animation(trip, 1.4s, ease-in, 1s);
+.loaded {
+	.rotate-warn {
+		display: none;
+	}
+	
+	@media (max-width: $mobile) and (orientation: landscape) {
+		main {
+			height: 100vw;
+			width: 100vh;
+			@include transform( rotate(90deg) );
+			transform-origin: 50vw 50vw;
+
+			.drump-box {
+				@include animation(trip, 1.4s, ease-in, 0.5s);
+				
+				img {
+					&.fallen {
+						display: block;
+					}
+					&.standing {
+						display: none;
+					}
+				}
+			}
 		}
 	}
-	&.trip {
-		.drump-box {
-			@include animation(trip, 1.4s, ease-in, 1s);
-		}
-	}
-
 }

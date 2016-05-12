@@ -1,29 +1,56 @@
 $(function(){
 
-	var $window = $window;
+	var $window = $(window);
 	var $body = $('body');
 	var $main = $('main');
+	var $tripBtn = $('.trip-btn');
 	var isPortrait;
 
-	// $window.resize(function(){
-	// 	var windowHeight = window.innerHeight;
-	// 	var windowWidth = window.innerWidth;
-	// 	var isPortrait = (windowHeight > windowWidth);
 
-	// 	// $window.trigger('my_orientation_change');
-	// 	if (isPortrait) {
-	// 		$main.removeClass('landscape');
-	// 	} else {
-	// 		$main.addClass('landscape');
-	// 	}
-	// });
+	function checkStartPos() {
+		var windowHeight = window.innerHeight;
+		var windowWidth = window.innerWidth;
+		var isPortrait = (windowHeight > windowWidth);
 
-	// $window.on('my_orientation_change', function(){
-	// 	console.log('Orientation change event');
+		if (isPortrait) {
+			$body.addClass('loaded');
+		} else {
+			$window.resize(function(){
+				var isNowPortrait = (window.innerHeight > window.innerWidth);
 
-	// 	if (isPortrait) {
+				if (isNowPortrait) {
+					$body.addClass('loaded');
+				}
+			});
+		}
+	}
 
-	// 	}
-	// });
+	checkStartPos();
+
+
+	function setBtn() {
+		var isTripped = false;
+
+		function makeTrip() {
+			$main.addClass('trip');
+			isTripped = true;
+			$tripBtn.text('RESET');
+		}
+		function resetTrip() {
+			$main.removeClass('trip');
+			isTripped = false;
+			$tripBtn.text('TRIP');
+		}
+
+		$tripBtn.click(function(){
+			if (isTripped) {
+				resetTrip();
+			} else {
+				makeTrip();
+			}
+		});
+	}
+
+	setBtn();
 
 });
