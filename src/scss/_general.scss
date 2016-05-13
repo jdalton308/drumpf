@@ -48,6 +48,8 @@ a {
 
 // Landing
 $box-height: 100px;
+$tripDelay-mobile: 0.5s;
+$tripDelay: 0.8s;
 
 main {
 	position: relative;
@@ -78,8 +80,8 @@ main {
 		display: inline-block;
 		width: 200px;
 		height: 400px;
-		background-color: $grey;
-		box-shadow: $box-shadow;
+		// background-color: $grey;
+		// box-shadow: $box-shadow;
 
 		// background-image: url('/img/drumpf_standing.png');
 		// background-position: center bottom;
@@ -95,7 +97,7 @@ main {
 			left: 0;
 
 			&.fallen {
-				display: none;
+				opacity: 0;
 			}
 		}
 	}
@@ -114,6 +116,13 @@ main {
 			font-size: 1.5rem;
 			background-color: transparent;
 			box-shadow: $box-shadow;
+
+			&:focus {
+				outline: none;
+			}
+			&:active {
+				box-shadow: $box-shadow-active;
+			}
 		}
 
 		&.trip {
@@ -123,10 +132,12 @@ main {
 
 				img {
 					&.fallen {
-						display: block;
+						// display: block;
+						@include animation(delayShow, $tripDelay, ease-in);
 					}
 					&.standing {
-						display: none;
+						// display: none;
+						@include animation(delayHide, $tripDelay, ease-in);
 					}
 				}
 			}
@@ -171,14 +182,16 @@ main {
 			transform-origin: 50vw 50vw;
 
 			.drump-box {
-				@include animation(trip, 1.4s, ease-in, 0.5s);
+				@include animation(trip, 1s, ease-in, 0s);
 				
 				img {
 					&.fallen {
-						display: block;
+						// display: block;
+						@include animation(delayShow, $tripDelay-mobile, ease-in);
 					}
 					&.standing {
-						display: none;
+						// display: none;
+						@include animation(delayHide, $tripDelay-mobile, ease-in);
 					}
 				}
 			}

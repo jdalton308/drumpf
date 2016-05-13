@@ -18,6 +18,7 @@ $main-bg: 		$mint;
 $box-color: 	$brown;
 $text-color: 	$white;
 $box-shadow: 	 4px 2px 20px -10px $black;
+$box-shadow-active: 	 4px 2px 20px -14px $black;
 
 
 //// FONTS ////
@@ -97,22 +98,22 @@ $curve3: cubic-bezier(.21,.05,.07,.99);
 		@include transform( translateX(50%) );
 	}
 	40% {
-		@include transform( translateX(45vh) translateY(-14vw) rotate(10deg) );
+		@include transform( translateX(47vh) translateY(-4vw) rotate(10deg) );
 	}
 	55% {
-		@include transform( translateX(48vh) translateY(-17vw) rotate(-2deg) );
+		@include transform( translateX(49vh) translateY(-6vw) rotate(-2deg) );
 	}
 	70% {
-		@include transform( translateX(49vh) translateY(-19vw) rotate(2deg) );
+		@include transform( translateX(49vh) translateY(-8vw) rotate(2deg) );
 	}
 	80% {
-		@include transform( translateX(49vh) translateY(-21vw) rotate(-1deg) );
+		@include transform( translateX(49vh) translateY(-9vw) rotate(-1deg) );
 	}
 	86% {
-		@include transform( translateX(50vh) translateY(-23vw) rotate(0deg) );
+		@include transform( translateX(50vh) translateY(-10vw) rotate(0deg) );
 	}
 	100% {
-		@include transform( translateX(50vh) translateY(-26vw) rotate(0deg) );
+		@include transform( translateX(50vh) translateY(-12vw) rotate(0deg) );
 	}
 };
 
@@ -133,4 +134,28 @@ $curve3: cubic-bezier(.21,.05,.07,.99);
 		@include transform( translateX(50%) rotate(90deg) translateY(-13vw) )
 	}
 
+};
+
+@include keyframes(delayShow) {
+	0% {
+		opacity: 0;
+	}
+	99% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+};
+
+@include keyframes(delayHide) {
+	0% {
+		opacity: 1;
+	}
+	99% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 };
