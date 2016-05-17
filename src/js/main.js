@@ -7,27 +7,79 @@ $(function(){
 	var isPortrait;
 
 
-	function checkStartPos() {
-		var windowHeight = window.innerHeight;
-		var windowWidth = window.innerWidth;
-		var isPortrait = (windowHeight > windowWidth);
+	// function checkStartPos() {
+	// 	var windowHeight = window.innerHeight;
+	// 	var windowWidth = window.innerWidth;
+	// 	var isPortrait = (windowHeight > windowWidth);
+
+	// 	if (isPortrait) {
+	// 		$body.addClass('loaded');
+	// 	} else {
+	// 		$window.resize(function(){
+	// 			var isNowPortrait = (window.innerHeight > window.innerWidth);
+
+	// 			if (isNowPortrait) {
+	// 				$body.addClass('loaded');
+	// 				Counter.add();
+	// 			}
+	// 		});
+	// 	}
+	// }
+
+	// checkStartPos();
+
+	// For moobile tripping...
+	function watchRotation() {
+		var isPortrait = checkPortrait();
+		var ready = false;
+
+		function checkPortrait() {
+			var windowHeight = window.innerHeight;
+			var windowWidth = window.innerWidth;
+
+			return (windowHeight > windowWidth);
+		}
+
+		function readyHandler() {
+			console.log('readyHandler called');
+			var isPortrait = checkPortrait();
+
+			if (isPortrait) {
+				$body.addClass('ready');
+				$window.off('resize', readyHandler);
+			}
+		}
+		function tripHandler() {
+			console.log('tripHandler called');
+			
+			function next() {
+				Counter.add();
+				Quotes.next();
+			}
+
+			window.setTimeout(function(){
+				var isPortrait = checkPortrait();
+
+				if (isPortrait) {
+					next();
+				}
+			}, 300);
+		}
 
 		if (isPortrait) {
-			$body.addClass('loaded');
+			$body.addClass('ready');
 		} else {
-			$window.resize(function(){
-				var isNowPortrait = (window.innerHeight > window.innerWidth);
-
-				if (isNowPortrait) {
-					$body.addClass('loaded');
-				}
-			});
+			$window.resize(readyHandler);
 		}
+
+		$window.resize(tripHandler);
+
 	}
 
-	checkStartPos();
+	watchRotation();
 
 
+	// For desktop tripping...
 	function setBtn() {
 		var isTripped = false;
 
@@ -35,6 +87,7 @@ $(function(){
 			$main.addClass('trip');
 			isTripped = true;
 			$tripBtn.text('RESET');
+			Counter.add();
 		}
 		function resetTrip() {
 			$main.removeClass('trip');
@@ -43,7 +96,10 @@ $(function(){
 			Quotes.next();
 		}
 
-		$tripBtn.click(function(){
+		$tripBtn.click(function(ev){
+			ev.stopPropagation();
+
+			console.log('click');
 			if (isTripped) {
 				resetTrip();
 			} else {
@@ -80,20 +136,54 @@ $(function(){
 			"We can't continue to allow China to rape our country"
 		];
 		var usedQuotes = [];
-		var $quoteBox = $('.quote-box'); 
+		var $quoteBox = $('.quote');
+		var $quoteText = $('.quote-box'); 
 
 		function next() {
 			var nextIndex = Math.floor( Math.random()*quotes.length );
-			// todo: Check in index was used already
+			console.log('NextIndex: '+ nextIndex);
 
 			var nextQuote = quotes[nextIndex];
-			$quoteBox.text(nextQuote);
+			console.log('Next quote: '+ nextQuote);
+
+			$quoteText.text(nextQuote);
+
+			// Show quote for 5 seconds
+			$quoteBox.removeClass('hide');
+			var quoteTimeout = window.setTimeout(function(){
+				$quoteBox.addClass('hide');
+				$body.off('click');
+			}, 5000);
+
+			$body.click(function(){
+				$quoteBox.addClass('hide');
+				window.clearTimeout(quoteTimeout);
+			});
 		}
 		return {
 			next: next
 		};
 	})();
 
-	Quotes.next();
+	Quotes.next(); // called by tripHandler on first load
 
+
+	var Counter = (function(){
+		var $counter = $('.odometer-number');
+		var currentCount = 0;
+
+		function add() {
+			currentCount++;
+			$counter.text(currentCount);
+		}
+		function set() {
+			$counter.text(currentCount);
+		}
+		return {
+			add: add,
+			set: set
+		};
+	})();
+
+	Counter.add();
 });

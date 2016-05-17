@@ -50,7 +50,7 @@ $curve3: cubic-bezier(.21,.05,.07,.99);
 
 //// MIXINS ////
 //-------------
-@mixin transition($time: 0.3s) {
+@mixin transition($time: 0.5s) {
 	-webkit-transition: all $time;
 	transition: all $time;
 }
