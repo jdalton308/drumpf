@@ -185,26 +185,46 @@ main {
   background-color: #58EBB3; }
   main .trip-btn {
     display: none; }
+  main .ad-box {
+    display: inline-block;
+    background-color: #666; }
+    main .ad-box.mobile {
+      position: absolute;
+      right: 50%;
+      -ms-transform: translateX(50%);
+      -webkit-transform: translateX(50%);
+      transform: translateX(50%);
+      bottom: 0;
+      width: 320px;
+      height: 50px; }
+    main .ad-box.desktop, main .ad-box.tablet {
+      display: none; }
   main .box {
     position: absolute;
     right: 50%;
     -ms-transform: translateX(50%);
     -webkit-transform: translateX(50%);
     transform: translateX(50%);
-    bottom: 0;
+    bottom: 50px;
     z-index: 2;
     display: inline-block;
     width: 100px;
     height: 100px;
+    padding: 25px 10px;
     background-color: #9E7E33;
-    box-shadow: 4px 2px 20px -10px #000; }
+    box-shadow: 4px 2px 20px -10px #000;
+    text-align: center; }
+    main .box .odometer {
+      display: inline-block; }
+    main .box .odometer-number {
+      display: block; }
   main .drump-box {
     position: absolute;
     right: 50%;
     -ms-transform: translateX(50%);
     -webkit-transform: translateX(50%);
     transform: translateX(50%);
-    bottom: 100px;
+    bottom: 150px;
     z-index: 1;
     display: inline-block;
     width: 200px;
@@ -218,35 +238,46 @@ main {
       left: 0; }
       main .drump-box img.fallen {
         opacity: 0; }
-  main .odometer {
-    margin-top: 50px; }
   main .quote {
-    position: fixed;
-    z-index: 9;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 150px 20px 0;
-    background-color: #58EBB3;
+    position: relative;
+    padding: 30px 20px 0;
     text-align: center;
-    overflow: hidden;
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
     main .quote.hide {
-      bottom: 100%; }
-    main .quote .say-what {
+      opacity: 0; }
+    main .quote .quote-head {
       margin-bottom: 50px;
       font-size: 1.5rem; }
-  @media (min-width: 769px) {
+    main .quote .quote-box {
+      max-width: 600px;
+      margin: 0 auto; }
+  @media (min-width: 768px) {
     main {
       padding-top: 10vh; }
+      main .ad-box.mobile {
+        display: none; }
+      main .ad-box.tablet {
+        display: block;
+        position: absolute;
+        right: 50%;
+        -ms-transform: translateX(50%);
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+        width: 728px;
+        height: 90px; }
+        main .ad-box.tablet.top {
+          top: 0; }
+      main .box {
+        bottom: 0; }
       main .drump-box {
+        bottom: 100px;
         transform-origin: 100px 100%; }
       main .trip-btn {
         position: relative;
         z-index: 5;
         display: inline-block;
+        min-width: 200px;
         padding: 15px 30px;
         border: 1px solid #666;
         color: #666;
@@ -266,6 +297,25 @@ main {
         main.trip .drump-box img.standing {
           -webkit-animation: delayHide 0.8s ease-in 0s 1 normal forwards;
           animation: delayHide 0.8s ease-in 0s 1 normal forwards; } }
+  @media (min-width: 1024px) {
+    main .ad-box.desktop {
+      display: block;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      width: 160px;
+      height: 600px; }
+      main .ad-box.desktop.left {
+        left: 0; }
+      main .ad-box.desktop.right {
+        right: 0; }
+    main .ad-box.tablet {
+      display: none; } }
+  @media (min-width: 1500px) {
+    main .ad-box.desktop {
+      width: 300px; } }
 
 .rotate-warn {
   display: none;

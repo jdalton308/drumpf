@@ -1,38 +1,23 @@
 $(function(){
 
+	// APP LOGIC
+	//==============================
+
 	var $window = $(window);
 	var $body = $('body');
 	var $main = $('main');
 	var $tripBtn = $('.trip-btn');
-	var isPortrait;
 
 
-	// function checkStartPos() {
-	// 	var windowHeight = window.innerHeight;
-	// 	var windowWidth = window.innerWidth;
-	// 	var isPortrait = (windowHeight > windowWidth);
 
-	// 	if (isPortrait) {
-	// 		$body.addClass('loaded');
-	// 	} else {
-	// 		$window.resize(function(){
-	// 			var isNowPortrait = (window.innerHeight > window.innerWidth);
-
-	// 			if (isNowPortrait) {
-	// 				$body.addClass('loaded');
-	// 				Counter.add();
-	// 			}
-	// 		});
-	// 	}
-	// }
-
-	// checkStartPos();
+	// Trip Events
+	//-----------------------
 
 	// For moobile tripping...
 	function watchRotation() {
-		var isPortrait = checkPortrait();
 		var ready = false;
 
+		// Utility function to check for orientation
 		function checkPortrait() {
 			var windowHeight = window.innerHeight;
 			var windowWidth = window.innerWidth;
@@ -40,18 +25,22 @@ $(function(){
 			return (windowHeight > windowWidth);
 		}
 
+		// Show warning if starting with phone in landscape
+		function isReady() {
+			$body.addClass('ready');
+			ready = true;
+			$window.off('resize', readyHandler);
+		}
 		function readyHandler() {
-			console.log('readyHandler called');
 			var isPortrait = checkPortrait();
 
 			if (isPortrait) {
-				$body.addClass('ready');
-				$window.off('resize', readyHandler);
+				isReady();
 			}
 		}
-		function tripHandler() {
-			console.log('tripHandler called');
-			
+
+		// For mobile tripping...
+		function tripHandler() {	
 			function next() {
 				Counter.add();
 				Quotes.next();
@@ -62,16 +51,20 @@ $(function(){
 
 				if (isPortrait) {
 					next();
+				} else {
+					Quotes.hide();
 				}
-			}, 300);
+			}, 200);
 		}
 
-		if (isPortrait) {
-			$body.addClass('ready');
+		// On load, check for portrait, and watch if not
+		if (checkPortrait()) {
+			isReady();
 		} else {
 			$window.resize(readyHandler);
 		}
 
+		// Always watch for turns
 		$window.resize(tripHandler);
 
 	}
@@ -87,19 +80,19 @@ $(function(){
 			$main.addClass('trip');
 			isTripped = true;
 			$tripBtn.text('RESET');
-			Counter.add();
+			Quotes.hide();
 		}
 		function resetTrip() {
 			$main.removeClass('trip');
 			isTripped = false;
 			$tripBtn.text('TRIP');
+			Counter.add();
 			Quotes.next();
 		}
 
 		$tripBtn.click(function(ev){
 			ev.stopPropagation();
 
-			console.log('click');
 			if (isTripped) {
 				resetTrip();
 			} else {
@@ -111,6 +104,9 @@ $(function(){
 	setBtn();
 
 
+
+	// Quote Module
+	//-----------------------
 	var Quotes = (function quotes() {
 		var quotes = [
 			'If Ivanka weren’t my daughter, perhaps I’d be dating her.',
@@ -140,50 +136,82 @@ $(function(){
 		var $quoteText = $('.quote-box'); 
 
 		function next() {
-			var nextIndex = Math.floor( Math.random()*quotes.length );
-			console.log('NextIndex: '+ nextIndex);
 
+			// Get and remember the next quote's index
+			function getIndex() {
+				return Math.floor( Math.random()*quotes.length );
+			}
+			var nextIndex = getIndex();
+
+			while (usedQuotes.indexOf(nextIndex) !== -1) {
+				nextIndex = getIndex();
+			}
+			usedQuotes.push(nextIndex);
+
+			// Reset 'usedQuotes' if full
+			if (usedQuotes.length == quotes.length) {
+				usedQuotes = [];
+			}
+
+			// Get and set next quote
 			var nextQuote = quotes[nextIndex];
-			console.log('Next quote: '+ nextQuote);
 
 			$quoteText.text(nextQuote);
 
-			// Show quote for 5 seconds
+			// Show quote //--for 5 seconds
 			$quoteBox.removeClass('hide');
-			var quoteTimeout = window.setTimeout(function(){
-				$quoteBox.addClass('hide');
-				$body.off('click');
-			}, 5000);
+			// var quoteTimeout = window.setTimeout(function(){
+			// 	$quoteBox.addClass('hide');
+			// 	$body.off('click');
+			// }, 5000);
 
-			$body.click(function(){
-				$quoteBox.addClass('hide');
-				window.clearTimeout(quoteTimeout);
-			});
+			// $body.click(function(){
+			// 	$quoteBox.addClass('hide');
+			// 	window.clearTimeout(quoteTimeout);
+			// });
+		}
+		function hide() {
+			$quoteBox.addClass('hide');
 		}
 		return {
-			next: next
+			next: next,
+			hide: hide
 		};
 	})();
 
 	Quotes.next(); // called by tripHandler on first load
 
 
-	var Counter = (function(){
-		var $counter = $('.odometer-number');
-		var currentCount = 0;
 
+	// Counter Module
+	//-----------------------
+	var Counter = (function(){
+
+		var $counter = $('.odometer-number');
+
+		// Firebase stuff
+		var dataRef = new Firebase("https://trip-drumpf.firebaseio.com/count");
+		var lastVal;
+
+		// Set-up sync with database
+		dataRef.on("value", function(snapshot) {
+			var currentCount = snapshot.val();
+			$counter.text(currentCount);
+			lastVal = currentCount;
+		}, function (errorObject) {			
+			lastVal++;
+			$counter.text(lastVal);
+		});
+
+		// Update database, and firebase automatically updates value and calls the callback above
 		function add() {
-			currentCount++;
-			$counter.text(currentCount);
-		}
-		function set() {
-			$counter.text(currentCount);
+			dataRef.transaction(function(dataObj) {
+				return (dataObj || 0) + 1;
+			});
 		}
 		return {
-			add: add,
-			set: set
+			add: add
 		};
 	})();
 
-	Counter.add();
 });

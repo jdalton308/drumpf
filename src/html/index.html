@@ -2,32 +2,63 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="themeColor" content="#444">
+	<meta name="themeColor" content="#58EBB3">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Trip Drumpf</title>
 	<meta name="description" content="Turn your phone and make Mr. Drumpf fall over">
 
-	<!-- TODO: Analytics, Facebook, Twitter -->
+	<!-- TODO: Facebook and Twitter -->
+
+	<!-- Google Analytics -->
+<!-- 	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-77904207-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script> -->
+	
 
 	<link rel="stylesheet" charset="utf-8" href="/css/main.css">
 </head>
 <body>
+
+<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K9B9NH"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-K9B9NH');</script>
+<!-- End Google Tag Manager -->
 	
+
 	<main>
 		<button class="trip-btn">TRIP</button>
 
-		<div class="odometer">Be trip <span class="nobreak">#<span class="odometer-number"></span></span></div>
-
 		<div class="quote">
-			<div class="say-what">Mr. Drumpf:</div>
+			<!-- <div class="quote-head">Mr. Drumpf:</div> -->
 			<div class="quote-box"></div>
 		</div>
 
-		<div class="box"></div>
+		<div class="box">
+			<div class="odometer">Trip #:<span class="odometer-number"></span></div>
+		</div>
 		<div class="drump-box">
 			<img src="/img/drumpf_standing.png" alt="Mr. Drumpf" class="standing">
 			<img src="/img/drumpf_fallen.png" alt="Mr. Drumpf" class="fallen">
 		</div>
+		
+		<div class="ad-box mobile">ad</div>
+
+		<div class="ad-box tablet top"></div>
+
+		<div class="ad-box desktop left"></div>
+		<div class="ad-box desktop right"></div>
 	</main>
 
 	<div class="rotate-warn">

@@ -1,0 +1,17 @@
+Ko:
+- Podium
+- Social placement
+- Counter
+- Fonts
+- Instructions screen
+
+Joe:
+X- Persistent counter
+X- New quote appearance
+X- Ads placement
+- New designs for counter
+- Add webfonts
+- Social Integration
+X- Google Tag Manager/ Google Analytics
+- Domain name
+- Ads set-up
