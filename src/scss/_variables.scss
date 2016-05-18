@@ -13,8 +13,10 @@ $white: 		#FFF;
 
 $mint: 			#58EBB3;
 $brown: 		#9E7E33;
+$red: 			#f15c5c;
+$blue: 			#5b8af4;
 
-$main-bg: 		$mint;
+$main-bg: 		$blue;
 $box-color: 	$brown;
 $text-color: 	$white;
 $box-shadow: 	 4px 2px 20px -10px $black;
@@ -24,7 +26,7 @@ $box-shadow-active: 	 4px 2px 20px -14px $black;
 //// FONTS ////
 //-------------
 $base-font-size: 	20px;
-$sansFamily: 		Arial, 'sans-serif';
+$font-family: 		'Vollkorn', serif;
 
 
 //// BREAKPOINTS ////

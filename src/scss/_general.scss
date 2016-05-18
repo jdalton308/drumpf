@@ -11,7 +11,7 @@ body {
 }
 html {
 	font-size: $base-font-size;
-	font-family: $sansFamily;
+	font-family: $font-family;
 	color: $text-color;
 }
 h1,
@@ -80,24 +80,48 @@ main {
 			display: none;
 		}
 	}
+
+	.top-bar {
+		padding: 20px 20px 25px;
+		background-color: $red;
+
+		.stars {
+			display: inline-block;
+			height: 35px;
+			width: auto;
+			margin-bottom: 5px;
+		}
+		.odometer {
+			font-size: 1rem;
+			margin-bottom: 3px;
+		}
+		.odometer-number {
+			font-size: 1.2rem;
+		}
+	}
+	.quote {
+		position: relative;
+		padding: 30px 40px 0;
+		@include transition();
+
+		&.hide {
+			opacity: 0;
+		}
+
+		.quote-box {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+	}
 	.box {
 		@include centerX();
 		bottom: $ad-height;
 		z-index: 2;
 		display: inline-block;
-		width: $box-height;
+		width: auto;
 		height: $box-height;
-		padding: 25px 10px;
 		background-color: $box-color;
 		box-shadow: $box-shadow;
-		text-align: center;
-
-		.odometer {
-			display: inline-block;
-		}
-		.odometer-number {
-			display: block;
-		}
 	}
 	.drump-box {
 		@include centerX();
@@ -120,29 +144,8 @@ main {
 			}
 		}
 	}
-	.quote {
-		position: relative;
-		padding: 30px 20px 0;
-		text-align: center;
-		@include transition();
-
-		&.hide {
-			opacity: 0;
-		}
-
-		.quote-head {
-			margin-bottom: 50px;
-			font-size: 1.5rem;
-		}
-		.quote-box {
-			max-width: 600px;
-			margin: 0 auto;
-		}
-	}
 
 	@media (min-width: $mobile) {
-		padding-top: 10vh;
-		
 		.ad-box {
 			&.mobile {
 				display: none;
@@ -173,10 +176,11 @@ main {
 			z-index: 5;
 			display: inline-block;
 			min-width: 200px;
-			padding: 15px 30px;
-			border: 1px solid $grey;
-			color: $grey;
-			font-size: 1.5rem;
+			padding: 10px 15px 8px;
+			border: 1px solid $text-color;
+			color: $text-color;
+			font-size: 1.2rem;
+			font-family: $font-family;
 			background-color: transparent;
 			box-shadow: $box-shadow;
 
@@ -225,12 +229,6 @@ main {
 				display: none;
 			}
 		}
-		// .box {
-		// 	bottom: 0;
-		// }
-		// .drump-box {
-		// 	bottom: $box-height;
-		// }
 	}
 	@media (min-width: 1500px) {
 		.ad-box {

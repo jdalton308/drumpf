@@ -144,7 +144,7 @@ body {
 
 html {
   font-size: 20px;
-  font-family: Arial, "sans-serif";
+  font-family: "Vollkorn", serif;
   color: #FFF; }
 
 h1,
@@ -182,7 +182,7 @@ main {
   width: 100%;
   overflow: hidden;
   text-align: center;
-  background-color: #58EBB3; }
+  background-color: #5b8af4; }
   main .trip-btn {
     display: none; }
   main .ad-box {
@@ -199,6 +199,29 @@ main {
       height: 50px; }
     main .ad-box.desktop, main .ad-box.tablet {
       display: none; }
+  main .top-bar {
+    padding: 20px 20px 25px;
+    background-color: #f15c5c; }
+    main .top-bar .stars {
+      display: inline-block;
+      height: 35px;
+      width: auto;
+      margin-bottom: 5px; }
+    main .top-bar .odometer {
+      font-size: 1rem;
+      margin-bottom: 3px; }
+    main .top-bar .odometer-number {
+      font-size: 1.2rem; }
+  main .quote {
+    position: relative;
+    padding: 30px 40px 0;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s; }
+    main .quote.hide {
+      opacity: 0; }
+    main .quote .quote-box {
+      max-width: 600px;
+      margin: 0 auto; }
   main .box {
     position: absolute;
     right: 50%;
@@ -208,16 +231,10 @@ main {
     bottom: 50px;
     z-index: 2;
     display: inline-block;
-    width: 100px;
+    width: auto;
     height: 100px;
-    padding: 25px 10px;
     background-color: #9E7E33;
-    box-shadow: 4px 2px 20px -10px #000;
-    text-align: center; }
-    main .box .odometer {
-      display: inline-block; }
-    main .box .odometer-number {
-      display: block; }
+    box-shadow: 4px 2px 20px -10px #000; }
   main .drump-box {
     position: absolute;
     right: 50%;
@@ -238,65 +255,50 @@ main {
       left: 0; }
       main .drump-box img.fallen {
         opacity: 0; }
-  main .quote {
-    position: relative;
-    padding: 30px 20px 0;
-    text-align: center;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s; }
-    main .quote.hide {
-      opacity: 0; }
-    main .quote .quote-head {
-      margin-bottom: 50px;
-      font-size: 1.5rem; }
-    main .quote .quote-box {
-      max-width: 600px;
-      margin: 0 auto; }
   @media (min-width: 768px) {
-    main {
-      padding-top: 10vh; }
-      main .ad-box.mobile {
-        display: none; }
-      main .ad-box.tablet {
-        display: block;
-        position: absolute;
-        right: 50%;
-        -ms-transform: translateX(50%);
-        -webkit-transform: translateX(50%);
-        transform: translateX(50%);
-        width: 728px;
-        height: 90px; }
-        main .ad-box.tablet.top {
-          top: 0; }
-      main .box {
-        bottom: 0; }
-      main .drump-box {
-        bottom: 100px;
-        transform-origin: 100px 100%; }
-      main .trip-btn {
-        position: relative;
-        z-index: 5;
-        display: inline-block;
-        min-width: 200px;
-        padding: 15px 30px;
-        border: 1px solid #666;
-        color: #666;
-        font-size: 1.5rem;
-        background-color: transparent;
-        box-shadow: 4px 2px 20px -10px #000; }
-        main .trip-btn:focus {
-          outline: none; }
-        main .trip-btn:active {
-          box-shadow: 4px 2px 20px -14px #000; }
-      main.trip .drump-box {
-        -webkit-animation: tripDesktop 1.5s ease-in 0.2s 1 normal forwards;
-        animation: tripDesktop 1.5s ease-in 0.2s 1 normal forwards; }
-        main.trip .drump-box img.fallen {
-          -webkit-animation: delayShow 0.8s ease-in 0s 1 normal forwards;
-          animation: delayShow 0.8s ease-in 0s 1 normal forwards; }
-        main.trip .drump-box img.standing {
-          -webkit-animation: delayHide 0.8s ease-in 0s 1 normal forwards;
-          animation: delayHide 0.8s ease-in 0s 1 normal forwards; } }
+    main .ad-box.mobile {
+      display: none; }
+    main .ad-box.tablet {
+      display: block;
+      position: absolute;
+      right: 50%;
+      -ms-transform: translateX(50%);
+      -webkit-transform: translateX(50%);
+      transform: translateX(50%);
+      width: 728px;
+      height: 90px; }
+      main .ad-box.tablet.top {
+        top: 0; }
+    main .box {
+      bottom: 0; }
+    main .drump-box {
+      bottom: 100px;
+      transform-origin: 100px 100%; }
+    main .trip-btn {
+      position: relative;
+      z-index: 5;
+      display: inline-block;
+      min-width: 200px;
+      padding: 10px 15px 8px;
+      border: 1px solid #FFF;
+      color: #FFF;
+      font-size: 1.2rem;
+      font-family: "Vollkorn", serif;
+      background-color: transparent;
+      box-shadow: 4px 2px 20px -10px #000; }
+      main .trip-btn:focus {
+        outline: none; }
+      main .trip-btn:active {
+        box-shadow: 4px 2px 20px -14px #000; }
+    main.trip .drump-box {
+      -webkit-animation: tripDesktop 1.5s ease-in 0.2s 1 normal forwards;
+      animation: tripDesktop 1.5s ease-in 0.2s 1 normal forwards; }
+      main.trip .drump-box img.fallen {
+        -webkit-animation: delayShow 0.8s ease-in 0s 1 normal forwards;
+        animation: delayShow 0.8s ease-in 0s 1 normal forwards; }
+      main.trip .drump-box img.standing {
+        -webkit-animation: delayHide 0.8s ease-in 0s 1 normal forwards;
+        animation: delayHide 0.8s ease-in 0s 1 normal forwards; } }
   @media (min-width: 1024px) {
     main .ad-box.desktop {
       display: block;
