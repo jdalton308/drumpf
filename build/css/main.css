@@ -175,6 +175,23 @@ a {
   a:visited {
     color: #FFF; }
 
+button {
+  position: relative;
+  z-index: 5;
+  display: inline-block;
+  min-width: 200px;
+  padding: 10px 15px 8px;
+  border: 1px solid #FFF;
+  color: #FFF;
+  font-size: 1.2rem;
+  font-family: "Vollkorn", serif;
+  background-color: transparent;
+  box-shadow: 4px 2px 20px -10px #000; }
+  button:focus {
+    outline: none; }
+  button:active {
+    box-shadow: 4px 2px 20px -14px #000; }
+
 main {
   position: relative;
   display: block;
@@ -275,21 +292,7 @@ main {
       bottom: 100px;
       transform-origin: 100px 100%; }
     main .trip-btn {
-      position: relative;
-      z-index: 5;
-      display: inline-block;
-      min-width: 200px;
-      padding: 10px 15px 8px;
-      border: 1px solid #FFF;
-      color: #FFF;
-      font-size: 1.2rem;
-      font-family: "Vollkorn", serif;
-      background-color: transparent;
-      box-shadow: 4px 2px 20px -10px #000; }
-      main .trip-btn:focus {
-        outline: none; }
-      main .trip-btn:active {
-        box-shadow: 4px 2px 20px -14px #000; }
+      display: inline-block; }
     main.trip .drump-box {
       -webkit-animation: tripDesktop 1.5s ease-in 0.2s 1 normal forwards;
       animation: tripDesktop 1.5s ease-in 0.2s 1 normal forwards; }
@@ -319,7 +322,7 @@ main {
     main .ad-box.desktop {
       width: 300px; } }
 
-.rotate-warn {
+.overlay {
   display: none;
   position: fixed;
   z-index: 5;
@@ -327,8 +330,8 @@ main {
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: #aaa; }
-  .rotate-warn .copy-box {
+  background-color: rgba(0, 0, 0, 0.7); }
+  .overlay .copy-box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -337,11 +340,18 @@ main {
     transform: translate(-50%, -50%);
     width: 50%;
     text-align: center; }
+    .overlay .copy-box .close-modal {
+      margin-top: 20px; }
+  .overlay.show {
+    display: block;
+    z-index: 4; }
+  .overlay.hide {
+    display: none; }
   @media (orientation: landscape) {
-    .rotate-warn {
+    .overlay.rotate-warn {
       display: block; } }
   @media (min-width: 768px) {
-    .rotate-warn {
+    .overlay.rotate-warn {
       display: none; } }
 
 .ready .rotate-warn {

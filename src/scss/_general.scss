@@ -45,6 +45,27 @@ a {
 	}
 }
 
+button {
+	position: relative;
+	z-index: 5;
+	display: inline-block;
+	min-width: 200px;
+	padding: 10px 15px 8px;
+	border: 1px solid $text-color;
+	color: $text-color;
+	font-size: 1.2rem;
+	font-family: $font-family;
+	background-color: transparent;
+	box-shadow: $box-shadow;
+
+	&:focus {
+		outline: none;
+	}
+	&:active {
+		box-shadow: $box-shadow-active;
+	}
+}
+
 
 // Landing
 $box-height: 100px;
@@ -172,24 +193,7 @@ main {
 			transform-origin: $box-height 100%;
 		}
 		.trip-btn {
-			position: relative;
-			z-index: 5;
 			display: inline-block;
-			min-width: 200px;
-			padding: 10px 15px 8px;
-			border: 1px solid $text-color;
-			color: $text-color;
-			font-size: 1.2rem;
-			font-family: $font-family;
-			background-color: transparent;
-			box-shadow: $box-shadow;
-
-			&:focus {
-				outline: none;
-			}
-			&:active {
-				box-shadow: $box-shadow-active;
-			}
 		}
 
 		&.trip {
@@ -239,7 +243,7 @@ main {
 	}
 }
 
-.rotate-warn {
+.overlay {
 	display: none;
 	position: fixed;
 	z-index: 5;
@@ -247,19 +251,34 @@ main {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	background-color: $light-grey;
+	background-color: rgba(0,0,0, 0.7);
 
 	.copy-box {
 		@include centerMe();
 		width: 50%;
 		text-align: center;
+
+		.close-modal {
+			margin-top: 20px;
+		}
+	}
+	&.show {
+		display: block;
+		z-index: 4;
+	}
+	&.hide {
+		display: none;
 	}
 
-	@media (orientation: landscape) {
-		display: block;
+	&.rotate-warn {
+		@media (orientation: landscape) {
+			display: block;
+		}
+		@media (min-width: $mobile) {
+			display: none;
+		}
 	}
-	@media (min-width: $mobile) {
-		display: none;
+	&.instructions {
 	}
 }
 

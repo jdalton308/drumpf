@@ -10,6 +10,25 @@ $(function(){
 
 
 
+	// Instructions overlay
+	//-----------------------
+	var beenBefore = window.localStorage.getItem('trumptripped');
+
+	if (beenBefore !== 'true') {
+		$('.instructions').addClass('show');
+		window.localStorage.setItem('trumptripped', 'true');
+	}
+
+
+	// Overlay 'Close' Btn
+	//-----------------------
+	var $closeBtn = $('.close-modal');
+	$closeBtn.click(function(){
+		var $overlay = $(this).closest('.overlay');
+		$overlay.removeClass('show').addClass('hide');
+	});
+
+
 	// Trip Events
 	//-----------------------
 
