@@ -177,17 +177,8 @@ $(function(){
 
 			$quoteText.text(nextQuote);
 
-			// Show quote //--for 5 seconds
+			// Show quote
 			$quoteBox.removeClass('hide');
-			// var quoteTimeout = window.setTimeout(function(){
-			// 	$quoteBox.addClass('hide');
-			// 	$body.off('click');
-			// }, 5000);
-
-			// $body.click(function(){
-			// 	$quoteBox.addClass('hide');
-			// 	window.clearTimeout(quoteTimeout);
-			// });
 		}
 		function hide() {
 			$quoteBox.addClass('hide');
@@ -207,18 +198,24 @@ $(function(){
 	var Counter = (function(){
 
 		var $counter = $('.odometer-number');
+		var $sessionCounter = $('.star-text');
 
 		// Firebase stuff
 		var dataRef = new Firebase("https://trip-drumpf.firebaseio.com/count");
 		var lastVal;
+		var sessionTrips = 0;
 
 		// Set-up sync with database
 		dataRef.on("value", function(snapshot) {
 			var currentCount = snapshot.val();
+			sessionTrips++
+
 			$counter.text(currentCount);
+			$sessionCounter.text(sessionTrips);
 			lastVal = currentCount;
 		}, function (errorObject) {			
 			lastVal++;
+			sessionTrips++;
 			$counter.text(lastVal);
 		});
 

@@ -31,6 +31,8 @@ $font-family: 		'Vollkorn', serif;
 
 //// BREAKPOINTS ////
 //-------------------
+$mobile-small:	330px;
+$mobile-small-land: 570px;
 $mobile:    768px;
 $tablet:    1024px;
 $desktop:   1200px;
@@ -76,6 +78,12 @@ $curve3: cubic-bezier(.21,.05,.07,.99);
   position: absolute;
   top: 50%;
   @include transform( translateY(-50%) );
+}
+
+@mixin smallPhoneQuery() {
+	@media (max-width: $mobile-small) and (orientation: portrait), (max-width: $mobile-small-land) and (orientation: landscape) {
+		@content;
+	}
 }
 
 // Animations

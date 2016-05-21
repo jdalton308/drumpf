@@ -68,6 +68,7 @@ button {
 
 
 // Landing
+$box-height-small: 60px;
 $box-height: 100px;
 $ad-height: 50px;
 $ad-height-tablet: 90px;
@@ -103,14 +104,13 @@ main {
 	}
 
 	.top-bar {
-		padding: 20px 20px 25px;
+		padding: 5px 20px 10px;
 		background-color: $red;
 
 		.stars {
 			display: inline-block;
 			height: 35px;
 			width: auto;
-			margin-bottom: 5px;
 		}
 		.odometer {
 			font-size: 1rem;
@@ -118,10 +118,26 @@ main {
 		}
 		.odometer-number {
 			font-size: 1.2rem;
+			line-height: 1em;
+		}
+
+		@include smallPhoneQuery () {
+			padding-top: 10px;
+
+			.stars {
+				display: none;
+			}
+			.odometer {
+				font-size: 0.8rem;
+			}
+			.odometer-number {
+				font-size: 1rem;
+			}
 		}
 	}
 	.quote {
 		position: relative;
+		z-index: 2;
 		padding: 30px 40px 0;
 		@include transition();
 
@@ -132,6 +148,16 @@ main {
 		.quote-box {
 			max-width: 600px;
 			margin: 0 auto;
+			line-height: 1.2em;
+			text-shadow: 1px 1px $grey;
+		}
+
+		@include smallPhoneQuery () {
+			padding-top: 15px;
+
+			.quote-box {
+				line-height: 1.1em;
+			}
 		}
 	}
 	.box {
@@ -143,14 +169,18 @@ main {
 		height: $box-height;
 		background-color: $box-color;
 		box-shadow: $box-shadow;
+
+		@include smallPhoneQuery () {
+			height: $box-height-small;
+		}
 	}
 	.drump-box {
 		@include centerX();
-		bottom: $box-height + $ad-height;
+		bottom: calc(#{$box-height} + #{$ad-height});
 		z-index: 1;
 		display: inline-block;
 		width: 200px;
-		height: 400px;
+		height: auto;
 
 		img {
 			display: block;
@@ -163,6 +193,27 @@ main {
 			&.fallen {
 				opacity: 0;
 			}
+		}
+		@include smallPhoneQuery () {
+			width: 170px;
+			bottom: calc(#{$box-height-small} + #{$ad-height});
+		}
+	}
+	.star-counter {
+		position: absolute;
+		bottom: $ad-height + 20px;
+		right: calc(50% + 105px);
+		width: 60px;
+		height: 60px;
+		display: inline-block;
+		background-color: $white;
+
+		.star-text {
+			@include centerMe();
+			color: $blue;
+		}
+		@include smallPhoneQuery () {
+			right: calc(50% + 75px)
 		}
 	}
 
@@ -190,10 +241,15 @@ main {
 		}
 		.drump-box {
 			bottom: $box-height;
+			height: 210px;
 			transform-origin: $box-height 100%;
 		}
 		.trip-btn {
 			display: inline-block;
+			margin-top: 30px;
+		}
+		.star-counter {
+			bottom: 20px;
 		}
 
 		&.trip {
@@ -217,8 +273,9 @@ main {
 	@media (min-width: $tablet) {
 		.ad-box {
 			&.desktop {
+				position: absolute;
 				display: block;
-				@include centerY();
+				top: 105px;
 				width: 160px;
 				height: 600px;
 
