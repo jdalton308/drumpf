@@ -217,7 +217,7 @@ main {
     main .ad-box.desktop, main .ad-box.tablet {
       display: none; }
   main .top-bar {
-    padding: 5px 20px 10px;
+    padding: 10px 20px 10px;
     background-color: #f15c5c; }
     main .top-bar .stars {
       display: inline-block;
@@ -229,19 +229,81 @@ main {
     main .top-bar .odometer-number {
       font-size: 1.2rem;
       line-height: 1em; }
+    main .top-bar .share-icons {
+      position: absolute;
+      z-index: 4;
+      right: 100%;
+      top: 0;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      background-color: #f15c5c;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s; }
+      main .top-bar .share-icons .share-tab {
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: calc(100% - 40px);
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        background-color: #f15c5c;
+        color: #FFF;
+        border-radius: 50%;
+        box-shadow: 0 0 20px -5px #000;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s; }
+        main .top-bar .share-icons .share-tab .arrow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translate(-50%, -50%);
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          height: 26px;
+          width: 26px;
+          border-top: 2px solid #FFF;
+          border-right: 2px solid #FFF;
+          -ms-transform: translate(-30%, -50%) rotate(45deg);
+          -webkit-transform: translate(-30%, -50%) rotate(45deg);
+          transform: translate(-30%, -50%) rotate(45deg); }
+      main .top-bar .share-icons .icon-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        display: inline-block; }
+      main .top-bar .share-icons .share-icon {
+        display: block;
+        width: 100px;
+        height: auto; }
+        main .top-bar .share-icons .share-icon:first-child {
+          margin-bottom: 100px; }
+        main .top-bar .share-icons .share-icon img {
+          width: 100%;
+          height: auto; }
+      main .top-bar .share-icons.show {
+        right: 0; }
+        main .top-bar .share-icons.show .share-tab {
+          -ms-transform: translateY(-50%) rotate(180deg);
+          -webkit-transform: translateY(-50%) rotate(180deg);
+          transform: translateY(-50%) rotate(180deg); }
     @media (max-width: 330px) and (orientation: portrait), (max-width: 570px) and (orientation: landscape) {
-      main .top-bar {
-        padding-top: 10px; }
-        main .top-bar .stars {
-          display: none; }
-        main .top-bar .odometer {
-          font-size: 0.8rem; }
-        main .top-bar .odometer-number {
-          font-size: 1rem; } }
+      main .top-bar .stars {
+        display: none; }
+      main .top-bar .odometer {
+        font-size: 0.8rem; }
+      main .top-bar .odometer-number {
+        font-size: 1rem; } }
   main .quote {
     position: relative;
     z-index: 2;
-    padding: 30px 40px 0;
+    padding: 30px 20px 0;
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
     main .quote.hide {
@@ -292,6 +354,8 @@ main {
       left: 0; }
       main .drump-box img.fallen {
         opacity: 0; }
+      main .drump-box img.falling {
+        opacity: 0; }
     @media (max-width: 330px) and (orientation: portrait), (max-width: 570px) and (orientation: landscape) {
       main .drump-box {
         width: 170px;
@@ -299,36 +363,63 @@ main {
   main .star-counter {
     position: absolute;
     bottom: 70px;
-    right: calc(50% + 105px);
+    left: calc(50% + 120px);
     width: 60px;
     height: 60px;
     display: inline-block;
-    background-color: #FFF; }
+    background-image: url("/img/star_personalcounter.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; }
     main .star-counter .star-text {
+      display: inline-block;
+      padding-top: 4px;
       position: absolute;
       top: 50%;
       left: 50%;
       -ms-transform: translate(-50%, -50%);
       -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
+      line-height: 1em;
+      font-size: 1.2rem;
       color: #5b8af4; }
     @media (max-width: 330px) and (orientation: portrait), (max-width: 570px) and (orientation: landscape) {
       main .star-counter {
-        right: calc(50% + 75px); } }
+        left: calc(50% + 75px); } }
   @media (min-width: 768px) {
     main .ad-box.mobile {
       display: none; }
     main .ad-box.tablet {
       display: block;
-      position: absolute;
-      right: 50%;
-      -ms-transform: translateX(50%);
-      -webkit-transform: translateX(50%);
-      transform: translateX(50%);
+      margin: 0 auto;
       width: 728px;
       height: 90px; }
-      main .ad-box.tablet.top {
-        top: 0; }
+    main .top-bar {
+      position: relative;
+      padding-bottom: 15px; }
+      main .top-bar .top-bar-wrapper {
+        display: block;
+        margin: 0 auto;
+        max-width: 300px; }
+      main .top-bar .stars {
+        height: 45px; }
+      main .top-bar .odometer {
+        margin-bottom: 9px; }
+      main .top-bar .odometer-number {
+        font-size: 1.5rem; }
+      main .top-bar a.share-icon {
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        display: inline-block;
+        width: 54px;
+        height: auto; }
+        main .top-bar a.share-icon.twit-icon {
+          left: 15vw; }
+        main .top-bar a.share-icon.fb-icon {
+          right: 15vw; }
     main .box {
       bottom: 0; }
     main .drump-box {
@@ -338,30 +429,46 @@ main {
     main .trip-btn {
       display: inline-block;
       margin-top: 30px; }
+    main .quote .quote-box {
+      font-size: 1.3rem; }
     main .star-counter {
-      bottom: 20px; }
+      bottom: 40px;
+      right: calc(50% + 140px);
+      left: auto;
+      width: 80px;
+      height: 80px; }
+      main .star-counter .star-text {
+        font-size: 1.4rem; }
     main.trip .drump-box {
       -webkit-animation: tripDesktop 1.5s ease-in 0.2s 1 normal forwards;
       animation: tripDesktop 1.5s ease-in 0.2s 1 normal forwards; }
+      main.trip .drump-box img.standing {
+        -webkit-animation: delayHide 0.4s ease-in 0s 1 normal forwards;
+        animation: delayHide 0.4s ease-in 0s 1 normal forwards; }
+      main.trip .drump-box img.falling {
+        -webkit-animation: delayHide 0.4s ease-in 0.4s 1 normal forwards;
+        animation: delayHide 0.4s ease-in 0.4s 1 normal forwards; }
       main.trip .drump-box img.fallen {
         -webkit-animation: delayShow 0.8s ease-in 0s 1 normal forwards;
-        animation: delayShow 0.8s ease-in 0s 1 normal forwards; }
-      main.trip .drump-box img.standing {
-        -webkit-animation: delayHide 0.8s ease-in 0s 1 normal forwards;
-        animation: delayHide 0.8s ease-in 0s 1 normal forwards; } }
+        animation: delayShow 0.8s ease-in 0s 1 normal forwards; } }
   @media (min-width: 1024px) {
     main .ad-box.desktop {
       position: absolute;
       display: block;
       top: 105px;
       width: 160px;
-      height: 600px; }
+      height: 600px;
+      box-shadow: 0 0 20px -5px #000; }
       main .ad-box.desktop.left {
         left: 0; }
       main .ad-box.desktop.right {
         right: 0; }
     main .ad-box.tablet {
-      display: none; } }
+      display: none; }
+    main .top-bar a.share-icon.twit-icon {
+      left: 20vw; }
+    main .top-bar a.share-icon.fb-icon {
+      right: 20vw; } }
   @media (min-width: 1500px) {
     main .ad-box.desktop {
       width: 300px; } }
@@ -388,7 +495,7 @@ main {
       margin-top: 20px; }
   .overlay.show {
     display: block;
-    z-index: 4; }
+    z-index: 6; }
   .overlay.hide {
     display: none; }
   @media (orientation: landscape) {
@@ -397,6 +504,10 @@ main {
   @media (min-width: 768px) {
     .overlay.rotate-warn {
       display: none; } }
+  .overlay.instructions .copy-box img {
+    display: block;
+    height: 20vh;
+    margin: 5vh auto; }
 
 .ready .rotate-warn {
   display: none; }
@@ -412,9 +523,11 @@ main {
     .ready main .drump-box {
       -webkit-animation: trip 1s ease-in 0s 1 normal forwards;
       animation: trip 1s ease-in 0s 1 normal forwards; }
+      .ready main .drump-box img.standing {
+        opacity: 0; }
+      .ready main .drump-box img.falling {
+        -webkit-animation: delayHide 0.5s ease-in 0s 1 normal forwards;
+        animation: delayHide 0.5s ease-in 0s 1 normal forwards; }
       .ready main .drump-box img.fallen {
         -webkit-animation: delayShow 0.5s ease-in 0s 1 normal forwards;
-        animation: delayShow 0.5s ease-in 0s 1 normal forwards; }
-      .ready main .drump-box img.standing {
-        -webkit-animation: delayHide 0.5s ease-in 0s 1 normal forwards;
-        animation: delayHide 0.5s ease-in 0s 1 normal forwards; } }
+        animation: delayShow 0.5s ease-in 0s 1 normal forwards; } }

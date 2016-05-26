@@ -12,7 +12,7 @@ var styleFiles = [
     ];
 var jsFiles = [
 		'node_modules/jquery/dist/jquery.min.js',
-		'bower_components/firebase/firebase-debug.js',
+		// 'bower_components/firebase/firebase-debug.js',
 		'./src/js/**/*.js'
 	];
 var htmlFiles = [

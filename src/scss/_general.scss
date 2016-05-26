@@ -68,12 +68,17 @@ button {
 
 
 // Landing
+$tabSize: 80px;
+
 $box-height-small: 60px;
 $box-height: 100px;
+
 $ad-height: 50px;
 $ad-height-tablet: 90px;
+
 $tripDelay-mobile: 0.5s;
 $tripDelay: 0.8s;
+$tripFallingDelay: 0.4s;
 
 main {
 	position: relative;
@@ -104,7 +109,7 @@ main {
 	}
 
 	.top-bar {
-		padding: 5px 20px 10px;
+		padding: 10px 20px 10px;
 		background-color: $red;
 
 		.stars {
@@ -120,10 +125,69 @@ main {
 			font-size: 1.2rem;
 			line-height: 1em;
 		}
+		.share-icons {
+			position: absolute;
+			z-index: 4;
+			right: 100%;
+			top: 0;
+			display: inline-block;
+			height: 100%;
+			width: 100%;
+			// padding: 50% 20%;
+			background-color: $red;
+			@include transition();
+
+			.share-tab {
+				@include centerY();
+				left: calc(100% - #{$tabSize / 2});
+				display: inline-block;
+				width: $tabSize;
+				height: $tabSize;
+				background-color: $red;
+				color: $white;
+				border-radius: 50%;
+				box-shadow: 0 0 20px -5px $black;
+				@include transition();
+
+				.arrow {
+					@include centerMe();
+					height: 26px;
+					width: 26px;
+					border-top: 2px solid $white;
+					border-right: 2px solid $white;
+					@include transform( translate(-30%, -50%) rotate(45deg) );
+				}
+			}
+			.icon-wrapper {
+				@include centerMe();
+				display: inline-block;
+			}
+			.share-icon {
+				display: block;
+				width: 100px;
+				height: auto;
+				// margin: 0 auto;
+
+				&:first-child {
+					margin-bottom: 100px;
+				}
+
+				img {
+					width: 100%;
+					height: auto;
+				}
+			}
+
+			&.show {
+				right: 0;
+				
+				.share-tab {
+					@include transform( translateY(-50%) rotate(180deg) );
+				}
+			}
+		}
 
 		@include smallPhoneQuery () {
-			padding-top: 10px;
-
 			.stars {
 				display: none;
 			}
@@ -138,7 +202,7 @@ main {
 	.quote {
 		position: relative;
 		z-index: 2;
-		padding: 30px 40px 0;
+		padding: 30px 20px 0;
 		@include transition();
 
 		&.hide {
@@ -193,6 +257,9 @@ main {
 			&.fallen {
 				opacity: 0;
 			}
+			&.falling {
+				opacity: 0;
+			}
 		}
 		@include smallPhoneQuery () {
 			width: 170px;
@@ -202,18 +269,26 @@ main {
 	.star-counter {
 		position: absolute;
 		bottom: $ad-height + 20px;
-		right: calc(50% + 105px);
+		left: calc(50% + 120px);
 		width: 60px;
 		height: 60px;
 		display: inline-block;
-		background-color: $white;
+		background-image: url('/img/star_personalcounter.svg');
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
 
 		.star-text {
+			display: inline-block;
+			padding-top: 4px;
 			@include centerMe();
+
+			line-height: 1em;
+			font-size: 1.2rem;
 			color: $blue;
 		}
 		@include smallPhoneQuery () {
-			right: calc(50% + 75px)
+			left: calc(50% + 75px)
 		}
 	}
 
@@ -224,17 +299,44 @@ main {
 			}
 			&.tablet {
 				display: block;
-				@include centerX();
+				margin: 0 auto;
+				// @include centerX();
 				width: 728px;
 				height: $ad-height-tablet;
-
-				&.top {
-					top: 0;
-				}
-				// &.bottom {
-				// 	bottom: 0;
-				// }
 			}
+		}
+		.top-bar {
+			position: relative;
+			padding-bottom: 15px;
+
+			.top-bar-wrapper {
+				display: block;
+				margin: 0 auto;
+				max-width: 300px;
+			}
+			.stars {
+				height: 45px;
+			}
+			.odometer {
+				margin-bottom: 9px;
+			}
+			.odometer-number {
+				font-size: 1.5rem;
+			}
+			a.share-icon {
+				@include centerY();
+				display: inline-block;
+				width: 54px;
+				height: auto;
+
+				&.twit-icon {
+					left: 15vw;
+				}
+				&.fb-icon {
+					right: 15vw;
+				}
+			}
+
 		}
 		.box {
 			bottom: 0;
@@ -248,8 +350,21 @@ main {
 			display: inline-block;
 			margin-top: 30px;
 		}
+		.quote {
+			.quote-box {
+				font-size: 1.3rem;
+			}
+		}
 		.star-counter {
-			bottom: 20px;
+			bottom: 40px;
+			right: calc(50% + 140px);
+			left: auto;
+			width: 80px;
+			height: 80px;
+
+			.star-text {
+				font-size: 1.4rem;
+			}
 		}
 
 		&.trip {
@@ -258,13 +373,17 @@ main {
 				// background-image: url('/img/drumpf_fallen.png');
 
 				img {
+					&.standing {
+						// display: none;
+						@include animation(delayHide, $tripFallingDelay, ease-in);
+					}
+					&.falling {
+						// display: none;
+						@include animation(delayHide, $tripDelay - $tripFallingDelay, ease-in, $tripFallingDelay);
+					}
 					&.fallen {
 						// display: block;
 						@include animation(delayShow, $tripDelay, ease-in);
-					}
-					&.standing {
-						// display: none;
-						@include animation(delayHide, $tripDelay, ease-in);
 					}
 				}
 			}
@@ -278,6 +397,7 @@ main {
 				top: 105px;
 				width: 160px;
 				height: 600px;
+				box-shadow: 0 0 20px -5px $black;
 
 				&.left {
 					left: 0;
@@ -288,6 +408,17 @@ main {
 			}
 			&.tablet {
 				display: none;
+			}
+		}
+		.top-bar {
+
+			a.share-icon {
+				&.twit-icon {
+					left: 20vw;
+				}
+				&.fb-icon {
+					right: 20vw;
+				}
 			}
 		}
 	}
@@ -321,7 +452,7 @@ main {
 	}
 	&.show {
 		display: block;
-		z-index: 4;
+		z-index: 6;
 	}
 	&.hide {
 		display: none;
@@ -336,6 +467,13 @@ main {
 		}
 	}
 	&.instructions {
+		.copy-box {
+			img {
+				display: block;
+				height: 20vh;
+				margin: 5vh auto;
+			}
+		}
 	}
 }
 
@@ -355,13 +493,16 @@ main {
 				@include animation(trip, 1s, ease-in, 0s);
 				
 				img {
+					&.standing {
+						opacity: 0;
+					}
+					&.falling {
+						// display: none;
+						@include animation(delayHide, $tripDelay-mobile, ease-in);
+					}
 					&.fallen {
 						// display: block;
 						@include animation(delayShow, $tripDelay-mobile, ease-in);
-					}
-					&.standing {
-						// display: none;
-						@include animation(delayHide, $tripDelay-mobile, ease-in);
 					}
 				}
 			}

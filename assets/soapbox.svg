@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1280 800" enable-background="new 0 0 1280 800" xml:space="preserve">
+	 viewBox="213.5 136.8 242.4 116.3" enable-background="new 213.5 136.8 242.4 116.3" xml:space="preserve">
 <g>
-	<polygon fill="#5B2F11" points="736.8,217.2 345.1,204.2 345.1,158.6 736.8,158.6 	"/>
-	<polygon fill="#7C481E" points="736.8,185.1 345.1,172.1 345.1,135 736.8,130.5 	"/>
-	<polygon fill="#5B2F11" points="736.8,294.1 345.1,281 345.1,235.5 736.8,235.5 	"/>
-	<polygon fill="#7C481E" points="736.8,252.5 345.1,252.5 349.9,202.4 736.8,187.9 	"/>
-	<polygon fill="#7C481E" points="736.8,314.5 345.1,314.5 348.9,273 736.8,260.5 	"/>
-	<polygon fill="#603813" points="379.6,314.5 345.1,314.5 345.1,126.5 368.8,126.5 	"/>
-	<polygon fill="#603813" points="736.8,314.5 685.4,314.5 702.3,126.5 736.8,126.5 	"/>
+	<polygon fill="#5B2F11" points="455.9,192.9 213.5,184.8 213.5,156.6 455.9,156.6 	"/>
+	<polygon fill="#7C481E" points="455.9,173 213.5,165 213.5,142 455.9,139.2 	"/>
+	<polygon fill="#5B2F11" points="455.9,240.5 213.5,232.4 213.5,204.2 455.9,204.2 	"/>
+	<polygon fill="#7C481E" points="455.9,214.7 213.5,214.7 216.5,183.7 455.9,174.8 	"/>
+	<polygon fill="#7C481E" points="455.9,253.1 213.5,253.1 215.9,227.4 455.9,219.7 	"/>
+	<polygon fill="#603813" points="234.9,253.1 213.5,253.1 213.5,136.8 228.2,136.8 	"/>
+	<polygon fill="#603813" points="455.9,253.1 424.1,253.1 434.5,136.8 455.9,136.8 	"/>
 </g>
 </svg>

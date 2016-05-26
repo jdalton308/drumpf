@@ -29,6 +29,15 @@ $(function(){
 	});
 
 
+	// Overlay 'Close' Btn
+	//-----------------------
+	var $shareTab = $('.share-tab');
+	var $shareCont = $shareTab.parents('.share-icons');
+	$shareTab.click(function(){
+		$shareCont.toggleClass('show');
+	});
+
+
 	// Trip Events
 	//-----------------------
 
@@ -128,27 +137,36 @@ $(function(){
 	//-----------------------
 	var Quotes = (function quotes() {
 		var quotes = [
-			'If Ivanka weren’t my daughter, perhaps I’d be dating her.',
-			'My fingers are long and beautiful, as, it has been well been documented, are various other parts of my body.',
-			'I am being proven right about massive vaccinations. The doctors lied. Save our children and their future.',
-			'Laziness is a trait in the blacks. Black guys counting my money! I hate it.',
-			'The only kind of people I want counting my money are little short guys that wear yamakas every day.',
-			'26,000 unreported sexual assaults in the military. Only 238 convictions. What did these geniuses expect when they put men & women together?',
-			'If Hillary Clinton can’t satisfy her husband what makes her think she can satisfy America.',
-			'You could see there was blood coming out of her eyes. Blood coming out of her wherever.',
-			'Today I officially declare my candidacy for President of the United States.',
-			'An ‘extremely credible source’ has called my office and told me that Barack Obama’s birth certificate is a fraud.',
-			'Ariana Huffington is unattractive, both inside and out. I fully understand why her former husband left her for a man – he made a good decision.',
-			'I will build a great wall – and nobody builds walls better than me, believe me – and I’ll build them very inexpensively. I will build a great, great wall on our southern border, and I will make Mexico pay for that wall. Mark my words.',
-			'When Mexico sends its people, they’re not sending the best. They’re not sending you, they’re sending people that have lots of problems and they’re bringing those problems with us. They’re bringing drugs. They’re bring crime. They’re rapists… And some, I assume, are good people.',
-			'All of the women on The Apprentice flirted with me – consciously or unconsciously. That’s to be expected.',
-			'Our great African-American President hasn’t exactly had a positive impact on the thugs who are so happily and openly destroying Baltimore.',
-			'I have never seen a thin person drinking Diet Coke.',
-			'I think the only difference between me and the other candidates is that I’m more honest and my women are more beautiful.',
-			'The point is, you can never be too greedy.',
+			"If Ivanka weren’t my daughter, perhaps I’d be dating her.",
+			"My fingers are long and beautiful, as, it has been well been documented, are various other parts of my body.",
+			"I am being proven right about massive vaccinations. The doctors lied. Save our children and their future",
+			"Laziness is a trait in the blacks. Black guys counting my money! I hate it.",
+			"The only kind of people I want counting my money are little short guys that wear yamakas every day.",
+			"26,000 unreported sexual assaults in the military. Only 238 convictions. What did these geniuses expect when they put men & women together?",
+			"If Hillary Clinton can’t satisfy her husband what makes her think she can satisfy America.",
+			"You could see there was blood coming out of her eyes. Blood coming out of her wherever.",
+			"Today I officially declare my candidacy for President of the United States.",
+			"An ‘extremely credible source’ has called my office and told me that Barack Obama’s birth certificate is a fraud.",
+			"Ariana Huffington is unattractive, both inside and out. I fully understand why her former husband left her for a man – he made a good decision.",
+			"I will build a great wall – and nobody builds walls better than me, believe me – and I’ll build them very inexpensively.",
+			"I will build a great, great wall on our southern border, and I will make Mexico pay for that wall. Mark my words.",
+			"When Mexico sends its people, they’re not sending the best. [...] They’re bringing drugs. They’re bring crime. They’re rapists… And some, I assume, are good people.",
+			"All of the women on The Apprentice flirted with me – consciously or unconsciously. That’s to be expected.",
+			"Our great African-American President hasn’t exactly had a positive impact on the thugs who are so happily and openly destroying Baltimore.",
+			"I have never seen a thin person drinking Diet Coke.",
+			"I think the only difference between me and the other candidates is that I’m more honest and my women are more beautiful.",
 			"My IQ is one of the highest — and you all know it! Please don't feel so stupid or insecure; it's not your fault.",
-			'Happy #CincoDeMayo! The best taco bowls are made in Trump Tower Grill. I love Hispanics!',
-			"We can't continue to allow China to rape our country"
+			"Happy #CincoDeMayo! The best taco bowls are made in Trump Tower Grill. I love Hispanics!",
+			"You know, it really doesn’t matter what the media write as long as you’ve got a young, and beautiful, piece of ass.",
+			"We can't continue to allow China to rape our country",
+			"Never, ever, ever in my life have I seen any transaction so incompetently negotiated as our deal with Iran. And I mean never [...] Israel will not survive.",
+			"Donald J. Trump is calling for a total and complete shutdown of Muslims entering the United States until our country's representatives can figure out what is going on.",
+			"When you get these terrorists, you have to take out their families [...] When they say they don’t care about their lives, you have to take out their families.",
+			"I would bring back waterboarding, and I would bring back a hell of a lot worse than waterboarding. You can rest assured that as commander in chief, I would use whatever enhanced interrogation methods we could to keep this country safe.",
+			"I’ve gone to gay weddings. I’ve been at gay weddings. I have been against [same-sex marriage] from the standpoint of the Bible, from the standpoint of my teachings as growing up and going to Sunday school and going to church.",
+			"I supported [Sen. John McCain] for president [...] But you know, he lost, so I’ve never liked him as much after that, because I don’t like losers. [...] He’s not a war hero [...] He’s a war hero because he was captured. I like people that weren’t captured.",
+			"The concept of global warming was created by and for the Chinese in order to make U.S. manufacturing non-competitive.",
+			"If I were running 'The View,' I'd fire Rosie [O'Donnell]. I mean, I'd look her right in that fat, ugly face of hers, I'd say, 'Rosie, you're fired."
 		];
 		var usedQuotes = [];
 		var $quoteBox = $('.quote');
@@ -200,20 +218,55 @@ $(function(){
 		var $counter = $('.odometer-number');
 		var $sessionCounter = $('.star-text');
 
-		// Firebase stuff
-		var dataRef = new Firebase("https://trip-drumpf.firebaseio.com/count");
 		var lastVal;
 		var sessionTrips = 0;
 
+		// Firebase stuff
+		var fbConfig = {
+			apiKey: "apiKey",
+			authDomain: "trip-drumpf.firebaseapp.com",
+			databaseURL: "https://trip-drumpf.firebaseio.com"
+		};
+		var config = {
+			apiKey: "AIzaSyAep4IrgwDLSTAVA1XhE2gDSOHkBA51bY0",
+			authDomain: "trip-drumpf.firebaseapp.com",
+			databaseURL: "https://trip-drumpf.firebaseio.com",
+			storageBucket: "trip-drumpf.appspot.com",
+		};
+		firebase.initializeApp(config);
+
+		// Sign-in to firebase
+		var authEmail = 'jdalton308@yahoo.com';
+		var authPass  = 'triptrump';
+		firebase.auth().signInWithEmailAndPassword(authEmail, authPass)
+			.then(function(result){
+				// console.log('logged in');
+			}).catch(function(error) {
+				// Handle Errors
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				
+				console.error('Could not authenticate with Firebase:');
+				console.error(error);
+		});
+
+		// Get firebase db
+		var dataRef = firebase.database().ref('/count');
+
 		// Set-up sync with database
 		dataRef.on("value", function(snapshot) {
+			// console.log('Value:');
+			// console.log(snapshot.val());
 			var currentCount = snapshot.val();
 			sessionTrips++
 
 			$counter.text(currentCount);
 			$sessionCounter.text(sessionTrips);
 			lastVal = currentCount;
-		}, function (errorObject) {			
+		}, function (errorObject) {
+			// console.log('error on value event');
+			// console.log(errorObject);
+
 			lastVal++;
 			sessionTrips++;
 			$counter.text(lastVal);
