@@ -407,19 +407,36 @@ main {
         margin-bottom: 9px; }
       main .top-bar .odometer-number {
         font-size: 1.5rem; }
-      main .top-bar a.share-icon {
-        position: absolute;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        display: inline-block;
-        width: 54px;
-        height: auto; }
-        main .top-bar a.share-icon.twit-icon {
-          left: 15vw; }
-        main .top-bar a.share-icon.fb-icon {
-          right: 15vw; }
+      main .top-bar .share-icons {
+        position: static;
+        display: block;
+        height: 0;
+        width: 0; }
+        main .top-bar .share-icons .share-tab {
+          display: none; }
+        main .top-bar .share-icons .icon-wrapper {
+          position: static;
+          display: block;
+          width: 0;
+          height: 0;
+          -ms-transform: none;
+          -webkit-transform: none;
+          transform: none; }
+        main .top-bar .share-icons a.share-icon {
+          position: absolute;
+          top: 50%;
+          -ms-transform: translateY(-50%);
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+          display: inline-block;
+          width: 54px;
+          height: auto; }
+          main .top-bar .share-icons a.share-icon:first-child {
+            margin: 0; }
+          main .top-bar .share-icons a.share-icon.twit-icon {
+            left: 18vw; }
+          main .top-bar .share-icons a.share-icon.fb-icon {
+            right: 18vw; }
     main .box {
       bottom: 0; }
     main .drump-box {
@@ -465,10 +482,10 @@ main {
         right: 0; }
     main .ad-box.tablet {
       display: none; }
-    main .top-bar a.share-icon.twit-icon {
-      left: 20vw; }
-    main .top-bar a.share-icon.fb-icon {
-      right: 20vw; } }
+    main .top-bar .share-icons a.share-icon.twit-icon {
+      left: 25vw; }
+    main .top-bar .share-icons a.share-icon.fb-icon {
+      right: 25vw; } }
   @media (min-width: 1500px) {
     main .ad-box.desktop {
       width: 300px; } }

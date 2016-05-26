@@ -323,17 +323,38 @@ main {
 			.odometer-number {
 				font-size: 1.5rem;
 			}
-			a.share-icon {
-				@include centerY();
-				display: inline-block;
-				width: 54px;
-				height: auto;
+			.share-icons {
+				position: static;
+				display: block;
+				height: 0;
+				width: 0;
 
-				&.twit-icon {
-					left: 15vw;
+				.share-tab {
+					display: none;
 				}
-				&.fb-icon {
-					right: 15vw;
+				.icon-wrapper {
+					position: static;
+					display: block;
+					width: 0;
+					height: 0;
+					@include transform(none);
+				}
+				a.share-icon {
+					@include centerY();
+					display: inline-block;
+					width: 54px;
+					height: auto;
+
+					&:first-child {
+						margin: 0;
+					}
+
+					&.twit-icon {
+						left: 18vw;
+					}
+					&.fb-icon {
+						right: 18vw;
+					}
 				}
 			}
 
@@ -412,14 +433,17 @@ main {
 		}
 		.top-bar {
 
-			a.share-icon {
-				&.twit-icon {
-					left: 20vw;
-				}
-				&.fb-icon {
-					right: 20vw;
+			.share-icons {
+				a.share-icon {
+					&.twit-icon {
+						left: 25vw;
+					}
+					&.fb-icon {
+						right: 25vw;
+					}
 				}
 			}
+
 		}
 	}
 	@media (min-width: 1500px) {
