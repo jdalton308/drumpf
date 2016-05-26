@@ -9,6 +9,39 @@ $(function(){
 	var $tripBtn = $('.trip-btn');
 
 
+	// Analytics
+	//----------
+	var Analytics = (function(){
+		function trip(screen) {
+			// screen = 'desktop' || 'mobile'
+			return dataLayer.push({'event': 'trip', 'screen': screen});
+		}
+		function share(network, action, target) {
+			return dataLayer.push({'event': 'social', 'network': network, 'action': action, 'target': target});
+		}
+		return {
+			trip: trip,
+			share: share
+		};
+	})();
+
+
+	// Social Tracking
+	//-------------------------
+	var $twitterBtn = $('.twit-icon');
+	var $fbBtn = $('.fb-icon');
+	var $shareIcons = $('.share-icon');
+
+	$shareIcons.click(function(){
+		var $this = $(this);
+		var type = ( $this.hasClass('twit-icon') ) ? 'twitter' : 'facebook';
+		var target = $this.attr('href');
+		var action = 'share';
+
+		Analytics.share(type, action, target);
+	});
+
+
 
 	// Instructions overlay
 	//-----------------------
@@ -72,6 +105,8 @@ $(function(){
 			function next() {
 				Counter.add();
 				Quotes.next();
+
+				Analytics.trip('Mobile');
 			}
 
 			window.setTimeout(function(){
@@ -109,6 +144,8 @@ $(function(){
 			isTripped = true;
 			$tripBtn.text('RESET');
 			Quotes.hide();
+
+			Analytics.trip('Desktop')
 		}
 		function resetTrip() {
 			$main.removeClass('trip');
@@ -282,5 +319,6 @@ $(function(){
 			add: add
 		};
 	})();
+
 
 });
