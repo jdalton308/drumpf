@@ -62,13 +62,76 @@ $(function(){
 	});
 
 
-	// Overlay 'Close' Btn
+	// 'Share' Drawer
 	//-----------------------
-	var $shareTab = $('.share-tab');
-	var $shareCont = $shareTab.parents('.share-icons');
-	$shareTab.click(function(){
-		$shareCont.toggleClass('show');
-	});
+	var mobileShareDrawer = (function(){
+		var $shareTab = $('.share-tab');
+		var $shareCont = $shareTab.parents('.share-icons');
+
+		var isOpen = false;
+		var windowWidth = window.innerWidth;
+
+		function touchStart(ev) {
+
+			function getPageX(ev) {
+				return ev.originalEvent.touches[0].pageX;
+			}
+			function getDeltaX(ev) {
+				var newX = getPageX(ev);
+				return newX - originX;
+			}
+
+			var originX = getPageX(ev);
+			var deltaX;
+			$shareCont.addClass('noTransition');
+
+			function touchMove(ev) {
+				deltaX = getDeltaX(ev);
+
+				if (isOpen) {
+					$shareCont.css({
+						right: -(deltaX)
+					});
+				} else {
+					$shareCont.css({
+						right: (windowWidth - deltaX)
+					});
+				}
+			}
+			function touchEnd(ev) {
+				$shareCont.removeClass('noTransition');
+				if (deltaX > 100) {
+					$shareCont.addClass('show').attr('style', '');
+					isOpen = true;
+				} else if (deltaX < -100) {
+					$shareCont.removeClass('show').attr('style', '');
+					isOpen = false;
+				} else if (deltaX < 5 && deltaX > -5) {
+					// like click event
+					$shareCont.toggleClass('show', isOpen).attr('style', '');
+					isOpen = !isOpen;
+				} else {
+					$shareCont.attr('style', '');
+				}
+				$window.off('touchmove');
+				$window.off('touchend');
+			}
+
+			$window.on('touchmove', touchMove);
+			$window.on('touchend', touchEnd);
+
+		}
+
+		// Events
+		$shareTab.click(function(){
+			$shareCont.toggleClass('show').attr('style', '');
+			isOpen = !isOpen;
+		});
+
+		$shareTab.on('touchstart', touchStart);
+
+	})();
+
 
 
 	// Trip Events

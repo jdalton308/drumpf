@@ -30,7 +30,7 @@ gulp.task('styles', function() {
 gulp.task('scripts', function(){
 	gulp.src(jsFiles)
 		.pipe(concat('app.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest('./build/js/'))
 		.on('error', gutil.log);
 });
