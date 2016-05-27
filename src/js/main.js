@@ -14,10 +14,12 @@ $(function(){
 	var Analytics = (function(){
 		function trip(screen) {
 			// screen = 'desktop' || 'mobile'
-			return dataLayer.push({'event': 'trip', 'screen': screen});
+			// return dataLayer.push({'event': 'trip', 'screen': screen});
+			return ga('send', 'event', 'trip', 'trip', screen); 
 		}
-		function share(network, action, target) {
-			return dataLayer.push({'event': 'social', 'network': network, 'action': action, 'target': target});
+		function share(network) {
+			// return dataLayer.push({'event': 'social', 'network': network, 'action': action, 'target': target});
+			return ga('send', 'event', 'social', 'share', network);
 		}
 		return {
 			trip: trip,
@@ -35,12 +37,9 @@ $(function(){
 	$shareIcons.click(function(){
 		var $this = $(this);
 		var type = ( $this.hasClass('twit-icon') ) ? 'twitter' : 'facebook';
-		var target = $this.attr('href');
-		var action = 'share';
 
-		Analytics.share(type, action, target);
+		Analytics.share(type);
 	});
-
 
 
 	// Instructions overlay
