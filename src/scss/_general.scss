@@ -64,6 +64,16 @@ button {
 	&:active {
 		box-shadow: $box-shadow-active;
 	}
+
+	@media (min-width: $mobile) {
+		@include transition();
+		cursor: pointer;
+
+		&:hover {
+			background-color: $text-color;
+			color: $blue;
+		}
+	}
 }
 
 
@@ -479,6 +489,13 @@ main {
 		.close-modal {
 			margin-top: 20px;
 		}
+		@media (min-width: $mobile) {
+			.close-modal {
+				&:hover {
+					color: $black;
+				}
+			}
+		}
 	}
 	&.show {
 		display: block;
@@ -503,6 +520,20 @@ main {
 				max-height: 20vh;
 				max-width: 100%;
 				margin: 5vh auto;
+			}
+			&.desktop {
+				display: none;
+			}
+		}
+
+		@media (min-width: $mobile) {
+			.copy-box {
+				&.mobile {
+					display: none;
+				}
+				&.desktop {
+					display: block;
+				}
 			}
 		}
 	}

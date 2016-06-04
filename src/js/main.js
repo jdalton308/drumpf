@@ -44,7 +44,7 @@ $(function(){
 
 	// Instructions overlay
 	//-----------------------
-	var beenBefore = window.localStorage.getItem('trumptripped');
+	var beenBefore;// = window.localStorage.getItem('trumptripped');
 
 	if (beenBefore !== 'true') {
 		$('.instructions').addClass('show');
@@ -321,11 +321,6 @@ $(function(){
 		var sessionTrips = 0;
 
 		// Firebase stuff
-		var fbConfig = {
-			apiKey: "apiKey",
-			authDomain: "trip-drumpf.firebaseapp.com",
-			databaseURL: "https://trip-drumpf.firebaseio.com"
-		};
 		var config = {
 			apiKey: "AIzaSyAep4IrgwDLSTAVA1XhE2gDSOHkBA51bY0",
 			authDomain: "trip-drumpf.firebaseapp.com",

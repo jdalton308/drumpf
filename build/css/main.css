@@ -144,7 +144,7 @@ body {
 
 html {
   font-size: 20px;
-  font-family: "Vollkorn", serif;
+  font-family: "Muli", sans-serif;
   color: #FFF; }
 
 h1,
@@ -184,13 +184,21 @@ button {
   border: 1px solid #FFF;
   color: #FFF;
   font-size: 1.2rem;
-  font-family: "Vollkorn", serif;
+  font-family: "Muli", sans-serif;
   background-color: transparent;
   box-shadow: 4px 2px 20px -10px #000; }
   button:focus {
     outline: none; }
   button:active {
     box-shadow: 4px 2px 20px -14px #000; }
+  @media (min-width: 768px) {
+    button {
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      cursor: pointer; }
+      button:hover {
+        background-color: #FFF;
+        color: #5b8af4; } }
 
 main {
   position: relative;
@@ -510,6 +518,9 @@ main {
     text-align: center; }
     .overlay .copy-box .close-modal {
       margin-top: 20px; }
+    @media (min-width: 768px) {
+      .overlay .copy-box .close-modal:hover {
+        color: #000; } }
   .overlay.show {
     display: block;
     z-index: 6; }
@@ -526,6 +537,13 @@ main {
     max-height: 20vh;
     max-width: 100%;
     margin: 5vh auto; }
+  .overlay.instructions .copy-box.desktop {
+    display: none; }
+  @media (min-width: 768px) {
+    .overlay.instructions .copy-box.mobile {
+      display: none; }
+    .overlay.instructions .copy-box.desktop {
+      display: block; } }
 
 .ready .rotate-warn {
   display: none; }
