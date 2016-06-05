@@ -28,20 +28,6 @@ $(function(){
 	})();
 
 
-	// Social Tracking
-	//-------------------------
-	var $twitterBtn = $('.twit-icon');
-	var $fbBtn = $('.fb-icon');
-	var $shareIcons = $('.share-icon');
-
-	$shareIcons.click(function(){
-		var $this = $(this);
-		var type = ( $this.hasClass('twit-icon') ) ? 'twitter' : 'facebook';
-
-		Analytics.share(type);
-	});
-
-
 	// Instructions overlay
 	//-----------------------
 	var beenBefore;// = window.localStorage.getItem('trumptripped');
@@ -376,6 +362,39 @@ $(function(){
 			add: add
 		};
 	})();
+
+
+	// Social Buttons
+	//-----------------------------
+
+	var $fbBtn = $('.fb-icon');
+	var $twitBtn = $('.twit-icon');
+
+	$fbBtn.click(function(e){
+		e.preventDefault();
+
+		var shareParams = {
+			method: 'share',
+			href: 'https://trump.betripping.com',
+			mobile_iframe: true
+		};
+
+		FB.ui(shareParams, function(){
+			// Callback...
+			if (response && !response.error_message) {
+				// Posting successful
+
+				Analytics.share('Facebook');
+			} else {
+				// Error while posting
+			}
+		});
+
+	});
+
+	$twitBtn.click(function(e){
+		Analytics.share('Twitter');
+	});
 
 
 });
