@@ -1,9 +1,0 @@
-{
-  "firebase": "trip-drumpf",
-  "public": "build",
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**"
-  ]
-}

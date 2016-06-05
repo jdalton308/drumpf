@@ -8,3 +8,8 @@
 ### OS-Generated ###
 
 .DS_Store
+
+
+### Firebase ###
+
+firebase.json
