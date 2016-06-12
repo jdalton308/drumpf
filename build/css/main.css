@@ -221,7 +221,7 @@ main {
       transform: translateX(50%);
       bottom: 0;
       width: 320px;
-      height: 50px; }
+      height: 0px; }
     main .ad-box.desktop, main .ad-box.tablet {
       display: none; }
   main .top-bar {
@@ -332,7 +332,7 @@ main {
     -ms-transform: translateX(50%);
     -webkit-transform: translateX(50%);
     transform: translateX(50%);
-    bottom: 50px;
+    bottom: 0px;
     z-index: 2;
     display: inline-block;
     width: auto;
@@ -348,7 +348,7 @@ main {
     -ms-transform: translateX(50%);
     -webkit-transform: translateX(50%);
     transform: translateX(50%);
-    bottom: calc(100px + 50px);
+    bottom: calc(100px + 0px);
     z-index: 1;
     display: inline-block;
     width: 200px;
@@ -367,10 +367,10 @@ main {
     @media (max-width: 330px) and (orientation: portrait), (max-width: 570px) and (orientation: landscape) {
       main .drump-box {
         width: 170px;
-        bottom: calc(60px + 50px); } }
+        bottom: calc(60px + 0px); } }
   main .star-counter {
     position: absolute;
-    bottom: 70px;
+    bottom: 20px;
     left: calc(50% + 120px);
     width: 60px;
     height: 60px;
@@ -401,7 +401,7 @@ main {
       display: block;
       margin: 0 auto;
       width: 728px;
-      height: 90px; }
+      height: 0px; }
     main .top-bar {
       position: relative;
       padding-bottom: 15px; }
