@@ -251,7 +251,8 @@ $(function(){
 			"I’ve gone to gay weddings. I’ve been at gay weddings. I have been against [same-sex marriage] from the standpoint of the Bible, from the standpoint of my teachings as growing up and going to Sunday school and going to church.",
 			"I supported [Sen. John McCain] for president [...] But you know, he lost, so I’ve never liked him as much after that, because I don’t like losers. [...] He’s not a war hero [...] He’s a war hero because he was captured. I like people that weren’t captured.",
 			"The concept of global warming was created by and for the Chinese in order to make U.S. manufacturing non-competitive.",
-			"If I were running 'The View,' I'd fire Rosie [O'Donnell]. I mean, I'd look her right in that fat, ugly face of hers, I'd say, 'Rosie, you're fired."
+			"If I were running 'The View,' I'd fire Rosie [O'Donnell]. I mean, I'd look her right in that fat, ugly face of hers, I'd say, 'Rosie, you're fired.",
+			"Appreciate the congrats for being right on radical Islamic terrorism,[...]"
 		];
 		var usedQuotes = [];
 		var $quoteBox = $('.quote');
