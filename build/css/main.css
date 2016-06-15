@@ -506,7 +506,7 @@ main {
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7); }
+  background-color: rgba(0, 0, 0, 0.85); }
   .overlay .copy-box {
     position: absolute;
     top: 50%;
@@ -518,6 +518,8 @@ main {
     text-align: center; }
     .overlay .copy-box .close-modal {
       margin-top: 20px; }
+    .overlay .copy-box .or-clause {
+      margin-top: 40px; }
     @media (min-width: 768px) {
       .overlay .copy-box .close-modal:hover {
         color: #000; } }
@@ -539,6 +541,8 @@ main {
     margin: 5vh auto; }
   .overlay.instructions .copy-box.desktop {
     display: none; }
+  .overlay.instructions .copy-box .close-modal {
+    margin-top: 40px; }
   @media (min-width: 768px) {
     .overlay.instructions .copy-box.mobile {
       display: none; }

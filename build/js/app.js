@@ -282,6 +282,7 @@ $(function(){
 
 			// Get and set next quote
 			var nextQuote = quotes[nextIndex];
+			nextQuote = '"' + nextQuote + '"';
 
 			$quoteText.text(nextQuote);
 

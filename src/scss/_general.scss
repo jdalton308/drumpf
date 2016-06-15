@@ -479,7 +479,7 @@ main {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	background-color: rgba(0,0,0, 0.7);
+	background-color: rgba(0,0,0, 0.85);
 
 	.copy-box {
 		@include centerMe();
@@ -488,6 +488,9 @@ main {
 
 		.close-modal {
 			margin-top: 20px;
+		}
+		.or-clause {
+			margin-top: 40px;
 		}
 		@media (min-width: $mobile) {
 			.close-modal {
@@ -523,6 +526,9 @@ main {
 			}
 			&.desktop {
 				display: none;
+			}
+			.close-modal {
+				margin-top: 40px;
 			}
 		}
 
