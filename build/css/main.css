@@ -514,15 +514,17 @@ main {
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 80%;
     text-align: center; }
     .overlay .copy-box .close-modal {
       margin-top: 20px; }
     .overlay .copy-box .or-clause {
       margin-top: 40px; }
     @media (min-width: 768px) {
-      .overlay .copy-box .close-modal:hover {
-        color: #000; } }
+      .overlay .copy-box {
+        width: 50%; }
+        .overlay .copy-box .close-modal:hover {
+          color: #000; } }
   .overlay.show {
     display: block;
     z-index: 6; }
@@ -534,13 +536,13 @@ main {
   @media (min-width: 768px) {
     .overlay.rotate-warn {
       display: none; } }
+  .overlay.instructions .copy-box.desktop {
+    display: none; }
   .overlay.instructions .copy-box img {
     display: block;
     max-height: 20vh;
-    max-width: 100%;
+    max-width: 200px;
     margin: 5vh auto; }
-  .overlay.instructions .copy-box.desktop {
-    display: none; }
   .overlay.instructions .copy-box .close-modal {
     margin-top: 40px; }
   @media (min-width: 768px) {

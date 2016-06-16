@@ -483,7 +483,7 @@ main {
 
 	.copy-box {
 		@include centerMe();
-		width: 50%;
+		width: 80%;
 		text-align: center;
 
 		.close-modal {
@@ -493,6 +493,8 @@ main {
 			margin-top: 40px;
 		}
 		@media (min-width: $mobile) {
+			width: 50%;
+
 			.close-modal {
 				&:hover {
 					color: $black;
@@ -518,14 +520,14 @@ main {
 	}
 	&.instructions {
 		.copy-box {
+			&.desktop {
+				display: none;
+			}
 			img {
 				display: block;
 				max-height: 20vh;
-				max-width: 100%;
+				max-width: 200px;
 				margin: 5vh auto;
-			}
-			&.desktop {
-				display: none;
 			}
 			.close-modal {
 				margin-top: 40px;

@@ -252,7 +252,8 @@ $(function(){
 			"I supported [Sen. John McCain] for president [...] But you know, he lost, so I’ve never liked him as much after that, because I don’t like losers. [...] He’s not a war hero [...] He’s a war hero because he was captured. I like people that weren’t captured.",
 			"The concept of global warming was created by and for the Chinese in order to make U.S. manufacturing non-competitive.",
 			"If I were running 'The View,' I'd fire Rosie [O'Donnell]. I mean, I'd look her right in that fat, ugly face of hers, I'd say, 'Rosie, you're fired.",
-			"Appreciate the congrats for being right on radical Islamic terrorism,[...]"
+			"Appreciate the congrats for being right on radical Islamic terrorism,[...]",
+			"If you see somebody getting ready to throw a tomato, knock the crap out of them, would you? Seriously. Okay? Just knock the hell — I promise you, I will pay for the legal fees."
 		];
 		var usedQuotes = [];
 		var $quoteBox = $('.quote');
