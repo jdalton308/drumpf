@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "joe-dalton"
+  },
+  "targets": {
+    "joe-dalton": {
+      "hosting": {
+        "trip-trump": [
+          "trip-trump"
+        ]
+      }
+    }
+  }
+}
